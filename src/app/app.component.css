@@ -1,0 +1,36 @@
+html {
+  background-color: black;
+}
+main {
+  /*arrange border*/
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: 10px solid black;
+  box-sizing: border-box;
+  background-color: rgb(110, 48, 19);
+  border-bottom-left-radius: 75px;
+  border-bottom-right-radius: 75px;
+}
+p {
+  padding: 20px;
+  color: gold;
+  font-size: large;
+  font-family: cursive;
+}
+.custom-tab-bar {
+  display: flex;
+  align-items: center;
+}
+.spacer {
+  flex: 1 1 auto;
+  background-color: black;
+}
+.footer {
+  bottom: 0;
+  justify-content: center;
+  font-size: small;
+}
