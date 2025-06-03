@@ -12,8 +12,8 @@ main {
   border: 10px solid black;
   box-sizing: border-box;
   background-color: rgb(110, 48, 19);
-  border-bottom-left-radius: 75px;
-  border-bottom-right-radius: 75px;
+  border-bottom-left-radius: 150px;
+  border-bottom-right-radius: 150px;
 }
 p {
   padding: 20px;
