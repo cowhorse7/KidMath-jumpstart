@@ -1,37 +1,28 @@
-# Angular
+# MathForKids
 
-This directory is a brief example of an [Angular](https://angular.io/) app that can be deployed to Vercel with zero configuration.
+## The Dream
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
+I grew up playing games like Mavis Beacon and Cluefinders, and I loved every minute. I haven't been able to find similar items, and those games haven't really been re-packaged for newer hardware. I want to make something inspired by those experiences that can be played right on the web.
 
-## Deploy Your Own
+## Stack
 
-Deploy your own Angular project with Vercel.
+I'm still not fully decided as of now, but planning on Angular as the code base. A good chance of MongoDB as the database, used to store usernames and scores, and possibly even problems. Users won't be required to log in, and I'm thinking that not-logged-in users may have their scores saved for a limited time.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/framework-boilerplates/angular&template=angular)
+## Timeline
 
-_Live Example: https://angular-template.vercel.app_
+I hope to have a working website and game by the end of this school term (about 3 weeks from now). I don't expect to have anything too fancy by then, but I will continue working until I am satisfied and hopefully until others have a chance to enjoy it, too.
 
-## Development server
+I have until the 16th of June to complete the project. By the end of next week (the 7th), I hope to have a working website with some CSS specifications. By the 13th, I plan to have my database hooked up and functional, and by the 16th have gameplay functionality for at least one game mode.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Details and Images
 
-## Code scaffolding
+![Alt text](./erd_image)
+Each user is only able to win an award one time, so a user and award type are together unique in the award table.
+![Alt text](./gameplay.png)
+![Alt text](./pageDesigns.png)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Progress and Time Spent
 
-## Build
+~5/28 ~30min iterate ideas and prepare project pitch
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+5/30 1hr design basic project, set up github, deploy vercel
