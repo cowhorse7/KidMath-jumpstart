@@ -16,10 +16,10 @@ I have until the 16th of June to complete the project. By the end of next week (
 
 ## Details and Images
 
-![Alt text](./erd_image)
+![Alt text](./images/erd_image)
 Each user is only able to win an award one time, so a user and award type are together unique in the award table.
-![Alt text](./gameplay.png)
-![Alt text](./pageDesigns.png)
+![Alt text](./images/gameplay.png)
+![Alt text](./images/pageDesigns.png)
 
 ## Progress and Time Spent
 
