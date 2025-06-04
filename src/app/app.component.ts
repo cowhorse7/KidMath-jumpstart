@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular-test';
   leftLinks = [
-    { label: 'Tab 1', route: '/game' },
-    { label: 'Tab 2', route: '/leaderboard' },
+    { label: 'Play', route: '/game' },
+    { label: 'Leaderboard', route: '/leaderboard' },
   ];
-  rightLinks = [{ label: 'Tab 3', route: '/profile' }];
+  rightLinks = [{ label: 'Sign in', route: '/profile' }];
 }

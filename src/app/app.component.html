@@ -1,6 +1,6 @@
 <html>
   <main>
-    <nav mat-tab-nav-bar>
+    <nav mat-tab-nav-bar class="mat-nav">
       <a
         mat-tab-link
         *ngFor="let link of leftLinks"
@@ -23,7 +23,6 @@
         {{ link.label }}
       </a>
     </nav>
-    <p>Choose a game mode and difficulty:</p>
     <p class="footer">by cowhorse7 on Github</p>
   </main>
 </html>

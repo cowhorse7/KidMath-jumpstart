@@ -30,7 +30,35 @@ p {
   background-color: black;
 }
 .footer {
+  width: 100vw;
   bottom: 0;
+  position: fixed;
   justify-content: center;
   font-size: small;
+}
+a {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 2.2em;
+  color: goldenrod !important;
+}
+a:visited {
+  color: goldenrod !important;
+  text-decoration: none;
+}
+.mat-nav {
+  background: black;
+  border-bottom: 2px solid rgb(69, 28, 8);
+  color: blue;
+}
+.mat-nav .mat-mdc-tab-link {
+  background: rgb(69, 28, 8);
+  margin-right: 8px;
+  border-radius: 10px 10px 0 0;
+  color: rgb(183, 240, 84);
+  position: relative;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  border: 1px solid #9c6c23;
+  border-bottom: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
