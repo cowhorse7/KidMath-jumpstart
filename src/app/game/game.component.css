@@ -1,0 +1,57 @@
+main {
+  width: 100vw;
+  height: 100vh;
+  justify-items: center;
+  padding-top: 2%;
+}
+form {
+  justify-items: center;
+}
+p {
+  padding: 20px;
+  color: gold;
+  font-size: 3em;
+  font-family: cursive;
+}
+/* This spacer will be an image */
+.spacer {
+  height: 45vh;
+}
+.spacer2 {
+  height: 5vh;
+}
+.radio-button submit-button {
+  margin-top: 5vh;
+}
+.radio-button-group {
+  padding-top: 1em;
+  display: flex;
+  gap: 3em;
+}
+
+.radio-button {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 2px solid #007bff;
+  border-radius: 6px;
+  background-color: #e9f0ff;
+  color: #007bff;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hide the native radio input but keep it accessible */
+.radio-button-group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Style the label when the corresponding radio is checked */
+.radio-button-group input[type="radio"]:checked + label.radio-button {
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+}

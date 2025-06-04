@@ -1,5 +1,6 @@
 html {
   background-color: black;
+  justify-items: center;
 }
 main {
   /*arrange border*/

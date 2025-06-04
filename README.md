@@ -28,3 +28,5 @@ Each user is only able to win an award one time, so a user and award type are to
 5/30 1hr design basic project, set up github, deploy vercel
 
 6/2 1.5hr create initial angular components with basic css formatting
+
+6/3 1.2hr create choice buttons for game and other CSS
