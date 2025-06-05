@@ -8,9 +8,11 @@ import { GameComponent } from './game/game.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent, GameComponent],
+  declarations: [AppComponent, GameComponent, LeaderboardComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
