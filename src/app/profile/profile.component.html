@@ -2,7 +2,7 @@
   <h1>Log in or sign up to track your stats!</h1>
   <div class="login">
     <h2>Log in!</h2>
-    <form (ngSubmit)="login()" #formRef="ngForm">
+    <form (ngSubmit)="login()" #formLogin="ngForm">
       <label for="username">Username</label>
       <input
         type="text"
@@ -19,12 +19,12 @@
         required
         [(ngModel)]="formData.password"
       />
-      <button type="submit" [disabled]="formRef.invalid">Go!</button>
+      <button type="submit" [disabled]="formLogin.invalid">Go!</button>
     </form>
   </div>
   <div class="signup">
     <h2>Sign up!</h2>
-    <form (ngSubmit)="signUp()" #formRef="ngForm">
+    <form (ngSubmit)="signUp()" #formSignup="ngForm">
       <label for="username">Username</label>
       <input
         type="text"
@@ -41,7 +41,7 @@
         required
         [(ngModel)]="signupFormData.password"
       />
-      <button type="submit" [disabled]="formRef.invalid">Go!</button>
+      <button type="submit" [disabled]="formSignup.invalid">Go!</button>
     </form>
   </div>
 </div>
