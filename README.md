@@ -12,7 +12,11 @@ I'm still not fully decided as of now, but planning on Angular as the code base.
 
 I hope to have a working website and game by the end of this school term (about 3 weeks from now). I don't expect to have anything too fancy by then, but I will continue working until I am satisfied and hopefully until others have a chance to enjoy it, too.
 
-I have until the 16th of June to complete the project. By the end of next week (the 7th), I hope to have a working website with some CSS specifications. By the 13th, I plan to have my database hooked up and functional, and by the 16th have gameplay functionality for at least one game mode.
+I have until the 16th of June to complete the project. I will be presenting my progress in class on the 9th.
+
+- By the end of next week (the 7th), I hope to have a working website with some CSS specifications.
+- By the 13th, I plan to have my database hooked up and functional.
+- by the 16th have gameplay functionality for at least one game mode.
 
 ## Details and Images
 
@@ -30,3 +34,5 @@ Each user is only able to win an award one time, so a user and award type are to
 6/2 1.5hr create initial angular components with basic css formatting
 
 6/3 1.2hr create choice buttons for game and other CSS
+
+6/4 1.8hr integrate supabase, set up initial login/signup page

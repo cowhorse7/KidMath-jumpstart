@@ -11,5 +11,5 @@ export class AppComponent {
     { label: 'Play', route: '/game' },
     { label: 'Leaderboard', route: '/leaderboard' },
   ];
-  rightLinks = [{ label: 'Sign in', route: '/profile' }];
+  rightLinks = [{ label: 'Profile', route: '/profile' }];
 }
