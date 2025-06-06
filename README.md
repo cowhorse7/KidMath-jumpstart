@@ -36,3 +36,5 @@ Each user is only able to win an award one time, so a user and award type are to
 6/3 1.2hr create choice buttons for game and other CSS
 
 6/4 1.8hr integrate supabase, set up initial login/signup page
+
+6/5 1hr set up more supabase, arrange page changes based on form submissions

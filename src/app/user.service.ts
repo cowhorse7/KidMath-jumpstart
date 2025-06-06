@@ -20,8 +20,8 @@ export class UserService {
   usernameToEmail(username: string): string {
     return `${username}@fake.com`;
   }
-  signUp(username: string, password: string) {
-    return this.supabase.auth.signUp({
+  async signUp(username: string, password: string) {
+    return await this.supabase.auth.signUp({
       email: this.usernameToEmail(username),
       password: password,
     });
@@ -38,8 +38,8 @@ export class UserService {
   getProfile(user: User) {
     //sample perplexity implementation
     return this.supabase
-      .from('profiles')
-      .select('username, website')
+      .from('Profile')
+      .select('username, best_score, best_time')
       .eq('id', user.id)
       .single();
   }

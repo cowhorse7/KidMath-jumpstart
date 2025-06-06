@@ -1,4 +1,4 @@
-<div class="userbox" *ngIf="session === null">
+<div class="userbox" *ngIf="session === null; else profilebox">
   <h1>Log in or sign up to track your stats!</h1>
   <div class="login">
     <h2>Log in!</h2>
@@ -45,5 +45,9 @@
     </form>
   </div>
 </div>
-
-<h1>Hello, {{ username }}!</h1>
+<ng-template #profilebox>
+  <div *ngIf="profile">
+    <h1>Hello, {{ username }}!</h1>
+    <button (click)="logout()">Log out</button>
+  </div>
+</ng-template>

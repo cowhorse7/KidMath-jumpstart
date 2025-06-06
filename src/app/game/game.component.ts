@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
 })
-export class GameComponent {}
+export class GameComponent {
+  game = false;
+
+  onSubmit() {
+    this.game = true;
+  }
+}

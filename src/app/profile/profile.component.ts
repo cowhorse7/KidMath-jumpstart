@@ -49,6 +49,10 @@ export class ProfileComponent implements OnInit {
     this.supabase.signIn(this.formData.username, this.formData.password);
     this.username = this.formData.username;
   }
+  logout() {
+    this.supabase.signOut();
+    this.username = '';
+  }
   signUp() {
     this.supabase.signUp(
       this.signupFormData.username,

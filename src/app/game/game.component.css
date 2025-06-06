@@ -13,11 +13,10 @@ p {
   font-size: 3em;
   font-family: cursive;
 }
-/* This spacer will be an image */
-.spacer {
+/* img {
   height: 45vh;
-}
-.spacer2 {
+} */
+.spacer {
   height: 5vh;
 }
 .radio-button submit-button {
