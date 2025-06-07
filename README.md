@@ -41,4 +41,6 @@ Each user is only able to win an award one time, so a user and award type are to
 
 6/6 1.5hr supabase almost working but possibly just ruined
 
-6/7 add leaderboard component, fix game form
+6/7.1 1.5hr add leaderboard component, fix game form
+
+6/7.2 0.3hr add some math generation logic
