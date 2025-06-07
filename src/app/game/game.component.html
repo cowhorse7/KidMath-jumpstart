@@ -1,45 +1,107 @@
 <main>
   <div class="modebox" *ngIf="!game; else gamebox">
     <p>Choose a game mode and difficulty:</p>
-    <form>
+    <form #gameForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="radio-button-group" id="difficulty">
-        <input type="radio" id="easy" name="options" value="1" hidden />
+        <input
+          type="radio"
+          id="easy"
+          name="difficulty"
+          value="Easy"
+          hidden
+          [(ngModel)]="difficulty"
+          required
+        />
         <label for="easy" class="radio-button">Easy</label>
 
-        <input type="radio" id="medium" name="options" value="2" hidden />
+        <input
+          type="radio"
+          id="medium"
+          name="difficulty"
+          value="Medium"
+          hidden
+          [(ngModel)]="difficulty"
+        />
         <label for="medium" class="radio-button">Medium</label>
 
-        <input type="radio" id="hard" name="options" value="3" hidden />
+        <input
+          type="radio"
+          id="hard"
+          name="difficulty"
+          value="Hard"
+          hidden
+          [(ngModel)]="difficulty"
+        />
         <label for="hard" class="radio-button">Hard</label>
       </div>
       <img src="/images/gameplay.png" />
       <div class="radio-button-group" id="game-mode">
-        <input type="radio" id="sub" name="options" value="1" hidden />
+        <input
+          type="radio"
+          id="sub"
+          name="game-mode"
+          value="Desert"
+          hidden
+          [(ngModel)]="gameMode"
+          required
+        />
         <label for="sub" class="radio-button">Desert (subtraction)</label>
 
-        <input type="radio" id="add" name="options" value="2" hidden />
+        <input
+          type="radio"
+          id="add"
+          name="game-mode"
+          value="Ocean"
+          hidden
+          [(ngModel)]="gameMode"
+        />
         <label for="add" class="radio-button">Ocean (addition)</label>
 
-        <input type="radio" id="div" name="options" value="3" hidden />
+        <input
+          type="radio"
+          id="div"
+          name="game-mode"
+          value="Forest"
+          hidden
+          [(ngModel)]="gameMode"
+        />
         <label for="div" class="radio-button">Forest (division)</label>
 
-        <input type="radio" id="mult" name="options" value="4" hidden />
+        <input
+          type="radio"
+          id="mult"
+          name="game-mode"
+          value="Volcano"
+          hidden
+          [(ngModel)]="gameMode"
+        />
         <label for="mult" class="radio-button">Volcano (mulitplication)</label>
 
-        <input type="radio" id="mix" name="options" value="5" hidden />
+        <input
+          type="radio"
+          id="mix"
+          name="game-mode"
+          value="Clouds"
+          hidden
+          [(ngModel)]="gameMode"
+        />
         <label for="mix" class="radio-button">Clouds (mixed)</label>
       </div>
       <div class="spacer"></div>
       <button
         type="submit"
         class="radio-button submit-button"
-        (click)="onSubmit()"
+        [disabled]="!difficulty || !gameMode"
       >
         Submit
       </button>
     </form>
   </div>
+
   <ng-template #gamebox>
     <p>Game works!</p>
+    <p>You selected: {{ gameMode }}</p>
+    <p>On difficulty: {{ difficulty }}</p>
+    <button (click)="back()">←</button>
   </ng-template>
 </main>

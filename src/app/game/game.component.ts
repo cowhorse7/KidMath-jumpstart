@@ -7,8 +7,13 @@ import { Component } from '@angular/core';
 })
 export class GameComponent {
   game = false;
+  difficulty: string | null = null;
+  gameMode: string | null = null;
 
   onSubmit() {
     this.game = true;
+  }
+  back() {
+    this.game = false;
   }
 }
