@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
-import { AuthSession } from '@supabase/supabase-js';
+import { Component, Input, OnInit } from '@angular/core';
+import { Profile, UserService } from '../user.service';
+import { AuthResponse, AuthSession } from '@supabase/supabase-js';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
+  // implements OnInit {
   loading = false;
-  session: AuthSession | null = null;
-  profile: any = null;
+  profile!: Profile;
   username: string = '';
+  best_score: number = 0;
+  best_time: number = 0.0;
   formData = {
     username: '',
     password: '',
@@ -21,32 +23,64 @@ export class ProfileComponent implements OnInit {
     password: '',
   };
 
+  @Input()
+  session!: AuthSession;
+
   constructor(private supabase: UserService) {}
 
-  async ngOnInit() {
-    this.session = await this.supabase.getSession();
-    if (this.session && this.session.user) {
-      this.loadProfile(this.session.user);
-    }
-    this.supabase.supabase.auth.onAuthStateChange((_event, session) => {
-      this.session = session;
-      if (session && session.user) {
-        this.loadProfile(session.user);
-      } else {
-        this.profile = null;
-      }
-    });
+  async profileDeclaration() {
+    //ngOnInit(): Promise<void> {
+    await this.getProfile();
+    this.best_score = this.profile.best_score;
+    this.best_time = this.profile.best_time;
   }
 
-  async loadProfile(user: any) {
-    this.loading = true;
-    const { data, error } = await this.supabase.getProfile(user);
-    if (!error) this.profile = data;
-    this.loading = false;
+  async getProfile() {
+    try {
+      this.loading = true;
+      const { user } = this.session;
+      const {
+        data: profile,
+        error,
+        status,
+      } = await this.supabase.Profile(user);
+      if (error && status !== 406) {
+        throw error;
+      }
+      if (profile) {
+        this.profile = profile;
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      }
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  async onSubmit(
+    passed: Promise<AuthResponse> | PromiseLike<{ error: any }> | { error: any }
+  ): Promise<void> {
+    try {
+      this.loading = true;
+      const { error } = await passed;
+      if (error) {
+        throw error;
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      }
+    } finally {
+      this.loading = false;
+    }
   }
 
   login() {
-    this.supabase.signIn(this.formData.username, this.formData.password);
+    this.onSubmit(
+      this.supabase.signIn(this.formData.username, this.formData.password)
+    );
     this.username = this.formData.username;
   }
   logout() {
@@ -54,9 +88,11 @@ export class ProfileComponent implements OnInit {
     this.username = '';
   }
   signUp() {
-    this.supabase.signUp(
-      this.signupFormData.username,
-      this.signupFormData.password
+    this.onSubmit(
+      this.supabase.signUp(
+        this.signupFormData.username,
+        this.signupFormData.password
+      )
     );
     this.username = this.signupFormData.username;
   }

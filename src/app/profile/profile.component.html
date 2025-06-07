@@ -1,4 +1,4 @@
-<div class="userbox" *ngIf="session === null; else profilebox">
+<div class="userbox" *ngIf="!session; else profilebox">
   <h1>Log in or sign up to track your stats!</h1>
   <div class="login">
     <h2>Log in!</h2>

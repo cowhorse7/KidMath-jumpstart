@@ -1,22 +1,52 @@
 import { Injectable } from '@angular/core';
-import { createClient, User } from '@supabase/supabase-js';
+import {
+  AuthChangeEvent,
+  AuthSession,
+  createClient,
+  Session,
+  SupabaseClient,
+  User,
+} from '@supabase/supabase-js';
 import { environment } from 'src/environment';
+
+export interface Profile {
+  id?: string;
+  username: string;
+  best_score: number;
+  best_time: number;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  public supabase = createClient(
-    environment.supabaseUrl,
-    environment.supabaseKey
-  );
+  private supabase: SupabaseClient;
+  _session: AuthSession | null = null;
+  constructor() {
+    this.supabase = createClient(
+      environment.supabaseUrl,
+      environment.supabaseKey
+    );
+  }
+  get session() {
+    this.supabase.auth.getSession().then(({ data }) => {
+      this._session = data.session;
+    });
+    return this._session;
+  }
 
-  getSession() {
-    return this.supabase.auth.getSession().then(({ data }) => data.session);
+  authChanges(
+    callback: (event: AuthChangeEvent, session: Session | null) => void
+  ) {
+    return this.supabase.auth.onAuthStateChange(callback);
   }
-  getUser() {
-    return this.supabase.auth.getUser().then(({ data }) => data.user);
-  }
+
+  // getSession() {
+  //   return this.supabase.auth.getSession().then(({ data }) => data.session);
+  // }
+  // getUser() {
+  //   return this.supabase.auth.getUser().then(({ data }) => data.user);
+  // }
   usernameToEmail(username: string): string {
     return `${username}@fake.com`;
   }
@@ -35,8 +65,7 @@ export class UserService {
   signOut() {
     return this.supabase.auth.signOut();
   }
-  getProfile(user: User) {
-    //sample perplexity implementation
+  Profile(user: User) {
     return this.supabase
       .from('Profile')
       .select('username, best_score, best_time')
