@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,6 @@ export class AppComponent {
     { label: 'Leaderboard', route: '/leaderboard' },
   ];
   rightLinks = [{ label: 'Profile', route: '/profile' }];
+
+  constructor(public router: Router) {}
 }

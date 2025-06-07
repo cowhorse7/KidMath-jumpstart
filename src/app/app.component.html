@@ -24,7 +24,7 @@
       </a>
     </nav>
     <router-outlet></router-outlet>
-    <div class="heading">
+    <div class="heading" *ngIf="router.url === '/'">
       <h1>Welcome!</h1>
       <h2>choose a tab to get started</h2>
     </div>

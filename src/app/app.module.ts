@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { ScoreTableComponent } from './leaderboard/score-table/score-table.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     GameComponent,
     LeaderboardComponent,
     ProfileComponent,
+    ScoreTableComponent,
   ],
   imports: [
     BrowserModule,
