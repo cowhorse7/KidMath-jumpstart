@@ -34,7 +34,7 @@
         />
         <label for="hard" class="radio-button">Hard</label>
       </div>
-      <img src="/images/gameplay.png" />
+      <img src="assets/images/gameplay.png" alt="placeholder image" />
       <div class="radio-button-group" id="game-mode">
         <input
           type="radio"
@@ -93,15 +93,26 @@
         class="radio-button submit-button"
         [disabled]="!difficulty || !gameMode"
       >
-        Submit
+        Start!
       </button>
     </form>
   </div>
 
   <ng-template #gamebox>
-    <p>Game works!</p>
-    <p>You selected: {{ gameMode }}</p>
-    <p>On difficulty: {{ difficulty }}</p>
+    <p>Theme: {{ gameMode }}</p>
+    <p>Difficulty: {{ difficulty }}</p>
     <button (click)="back()">←</button>
+    <!-- <button (click)="initGame()">Start!</button> -->
+    <img src="assets/images/gameplay.png" alt="placeholder image" />
+    <p>{{ operand1 }} {{ operator }} {{ operand2 }} = ___</p>
+    <!--consider a div and/or span ↑-->
+    <form #answerForm="ngForm" (ngSubmit)="checkAnswer()">
+      <input type="number" [(ngModel)]="userAnswer" required /><button
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+    <p class="feedback">{{ feedback }}</p>
   </ng-template>
 </main>

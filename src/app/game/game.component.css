@@ -54,3 +54,10 @@ p {
   color: white;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
 }
+img {
+  height: 50vh;
+}
+.feedback {
+  font-size: small;
+  color: white;
+}
