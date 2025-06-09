@@ -99,24 +99,46 @@
   </div>
 
   <ng-template #gamebox>
-    <p>Theme: {{ gameMode }}&nbsp;Score: {{ userScore }}</p>
-    <p>Difficulty: {{ difficulty }}&nbsp;Time: {{ userTime }}</p>
-    <button (click)="back()">←</button>
-    <!-- <button (click)="initGame()">Start!</button> -->
-    <img src="assets/images/gameplay.png" alt="placeholder image" />
-    <p>{{ operand1 }} {{ operator }} {{ operand2 }} = ___</p>
-    <!--consider a div and/or span ↑-->
-    <form #answerForm="ngForm" (ngSubmit)="checkAnswer()">
-      <p>
-        Your answer:<input
-          type="number"
-          name="answerForm"
-          [(ngModel)]="userAnswer"
-          required
-        /><button type="submit">Submit</button>
-      </p>
-    </form>
-    <p class="feedback">{{ feedback }}</p>
-    <p>Attempts remaining: {{ healthBar }}</p>
+    <div class="parent">
+      <div class="left">
+        <p>Theme:</p>
+        <p>{{ gameMode }}</p>
+        <p>Difficulty:</p>
+        <p>{{ difficulty }}</p>
+      </div>
+      <div class="center">
+        <button class="arrow" (click)="back()">←</button>
+        <!-- <button (click)="initGame()">Start!</button> -->
+        <img src="assets/images/gameplay.png" alt="placeholder image" />
+        <p>{{ operand1 }} {{ operator }} {{ operand2 }} = ___</p>
+        <!--consider a div and/or span ↑-->
+        <form #answerForm="ngForm" (ngSubmit)="checkAnswer()">
+          <p>
+            Your answer:<input
+              type="number"
+              name="answerForm"
+              [(ngModel)]="userAnswer"
+              required
+            /><button type="submit">Submit</button>
+          </p>
+        </form>
+        <p class="feedback">{{ feedback }}</p>
+
+        <div>
+          <p class="healthBar">
+            Attempts remaining:<span
+              *ngFor="let hp of [].constructor(healthBar)"
+              >&bull;</span
+            >
+          </p>
+        </div>
+      </div>
+      <div class="right">
+        <p>Score:</p>
+        <p>{{ userScore }}</p>
+        <p>Time:</p>
+        <p>{{ userTime }}</p>
+      </div>
+    </div>
   </ng-template>
 </main>

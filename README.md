@@ -45,4 +45,4 @@ Each user is only able to win an award one time, so a user and award type are to
 
 6/8 1.5hr add more game logic and pieces, fix image routing
 
-6/9.1 1hr fixing game and forms functionality
+6/9.1 1.5hr fixing game and forms functionality, mixing up some css

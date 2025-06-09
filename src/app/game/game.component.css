@@ -58,3 +58,15 @@ img {
   font-size: small;
   color: white;
 }
+.parent {
+  display: flex;
+  gap: 10px;
+  justify-items: center;
+}
+.healthBar {
+  font-size: medium;
+}
+span {
+  font-size: x-large;
+  color: gold;
+}
