@@ -1,6 +1,6 @@
 <html>
   <main>
-    <nav mat-tab-nav-bar class="mat-nav">
+    <nav mat-tab-nav-bar class="mat-nav" [tabPanel]="tabPanel">
       <a
         mat-tab-link
         *ngFor="let link of leftLinks"
@@ -23,7 +23,9 @@
         {{ link.label }}
       </a>
     </nav>
-    <router-outlet></router-outlet>
+    <mat-tab-nav-panel #tabPanel>
+      <router-outlet></router-outlet
+    ></mat-tab-nav-panel>
     <div class="heading" *ngIf="router.url === '/'">
       <h1>Welcome!</h1>
       <h2>choose a tab to get started</h2>
