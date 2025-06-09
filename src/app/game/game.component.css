@@ -8,19 +8,15 @@ form {
   justify-items: center;
 }
 p {
-  padding: 20px;
   color: gold;
   font-size: 3em;
   font-family: cursive;
 }
-/* img {
-  height: 45vh;
-} */
 .spacer {
-  height: 5vh;
+  height: 5px;
 }
 .radio-button submit-button {
-  margin-top: 5vh;
+  padding-bottom: 4vh;
 }
 .radio-button-group {
   padding-top: 1em;
@@ -55,6 +51,7 @@ p {
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
 }
 img {
+  padding-top: 1em;
   height: 50vh;
 }
 .feedback {

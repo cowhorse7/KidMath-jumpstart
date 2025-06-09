@@ -99,20 +99,24 @@
   </div>
 
   <ng-template #gamebox>
-    <p>Theme: {{ gameMode }}</p>
-    <p>Difficulty: {{ difficulty }}</p>
+    <p>Theme: {{ gameMode }}&nbsp;Score: {{ userScore }}</p>
+    <p>Difficulty: {{ difficulty }}&nbsp;Time: {{ userTime }}</p>
     <button (click)="back()">←</button>
     <!-- <button (click)="initGame()">Start!</button> -->
     <img src="assets/images/gameplay.png" alt="placeholder image" />
     <p>{{ operand1 }} {{ operator }} {{ operand2 }} = ___</p>
     <!--consider a div and/or span ↑-->
     <form #answerForm="ngForm" (ngSubmit)="checkAnswer()">
-      <input type="number" [(ngModel)]="userAnswer" required /><button
-        type="submit"
-      >
-        Submit
-      </button>
+      <p>
+        Your answer:<input
+          type="number"
+          name="answerForm"
+          [(ngModel)]="userAnswer"
+          required
+        /><button type="submit">Submit</button>
+      </p>
     </form>
     <p class="feedback">{{ feedback }}</p>
+    <p>Attempts remaining: {{ healthBar }}</p>
   </ng-template>
 </main>

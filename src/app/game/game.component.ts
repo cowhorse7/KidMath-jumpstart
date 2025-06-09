@@ -81,7 +81,7 @@ export class GameComponent {
 
   initGame() {
     this.setOperator();
-    this.setOperands();
+    this.equationGenerator();
     this.initHealthBar();
   }
 
@@ -115,12 +115,11 @@ export class GameComponent {
       this.feedback = 'Incorrect';
     }
     if (this.healthBar === 0) {
-      // FIXME: end the game
+      this.game = false; // FIXME: make this change a little less abrupt
       this.feedback =
         "You've run out of tries. Go back to the select screen to play again!"; // FUTURE: pick a funny name to replace "tries" Like 'math juice' lol
-    } else {
-      this.equationGenerator();
     }
+    this.equationGenerator();
     this.userAnswer = null;
   }
 }
