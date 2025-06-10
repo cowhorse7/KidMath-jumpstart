@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class GameComponent {
   game = false;
+  gameOver = false;
   difficulty: string | null = null;
   gameMode: string | null = null;
   operator: string | null = null;
@@ -83,6 +84,7 @@ export class GameComponent {
     this.setOperator();
     this.equationGenerator();
     this.initHealthBar();
+    this.feedback = '';
   }
 
   equationGenerator() {
@@ -92,7 +94,7 @@ export class GameComponent {
       case '+':
         this.answer = this.operand1! + this.operand2!;
         break;
-      case '-':
+      case '-': // FIXME: account for smaller first operand getting negative answers
         this.answer = this.operand1! - this.operand2!;
         break;
       case '/':
@@ -115,7 +117,8 @@ export class GameComponent {
       this.feedback = 'Incorrect';
     }
     if (this.healthBar === 0) {
-      this.game = false; // FIXME: make this change a little less abrupt
+      this.game = false; // FIXME: make this change a little less abrupt-- pop up a modal (based on gameOver variable)!!
+      this.gameOver = true;
       this.feedback =
         "You've run out of tries. Go back to the select screen to play again!"; // FUTURE: pick a funny name to replace "tries" Like 'math juice' lol
     }

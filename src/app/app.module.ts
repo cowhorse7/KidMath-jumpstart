@@ -12,6 +12,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { ScoreTableComponent } from './leaderboard/score-table/score-table.component';
+import { StopwatchComponent } from './game/stopwatch/stopwatch.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ScoreTableComponent } from './leaderboard/score-table/score-table.compo
     LeaderboardComponent,
     ProfileComponent,
     ScoreTableComponent,
+    StopwatchComponent,
   ],
   imports: [
     BrowserModule,

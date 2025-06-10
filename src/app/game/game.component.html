@@ -119,7 +119,7 @@
               name="answerForm"
               [(ngModel)]="userAnswer"
               required
-            /><button type="submit">Submit</button>
+            /><button type="submit" [disabled]="gameOver">Submit</button>
           </p>
         </form>
         <p class="feedback">{{ feedback }}</p>

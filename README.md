@@ -20,10 +20,10 @@ I have until the 16th of June to complete the project. I will be presenting my p
 
 ## Details and Images
 
-![Alt text](./images/erd_image)
+![Alt text](./src/assets/images/erd_image)
 Each user is only able to win an award one time, so a user and award type are together unique in the award table.
-![Alt text](./images/gameplay.png)
-![Alt text](./images/pageDesigns.png)
+![Alt text](./src/assets/images/gameplay.png)
+![Alt text](./src/assets/images/pageDesigns.png)
 
 ## Progress and Time Spent
 
@@ -46,3 +46,5 @@ Each user is only able to win an award one time, so a user and award type are to
 6/8 1.5hr add more game logic and pieces, fix image routing
 
 6/9.1 1.5hr fixing game and forms functionality, mixing up some css
+
+6/9.2 .8hr set up score and reward tables in supabase, begin timer component
