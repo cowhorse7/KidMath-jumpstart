@@ -1,13 +1,12 @@
 import { Component, inject, ViewChild } from '@angular/core';
 import { StopwatchComponent } from './stopwatch/stopwatch.component';
 import { GameCompleteModalComponent } from './game-complete-modal/game-complete-modal.component';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
-  imports: [MatDialog, MatDialogModule],
 })
 export class GameComponent {
   @ViewChild('stopwatch') stopwatch!: StopwatchComponent;
@@ -29,6 +28,7 @@ export class GameComponent {
 
   onSubmit() {
     this.game = true;
+    this.gameOver = false;
     this.initGame();
   }
   back() {
@@ -70,22 +70,23 @@ export class GameComponent {
       this.operand1 = this.operand2;
       this.operand2 = holder;
     } //consider allowing negative subtraction on hard diff.
+    // also, we want division to get whole numbers
   }
 
   initDifficultyVars() {
     switch (this.difficulty) {
       case 'Easy':
-        this.healthBar = 5;
+        this.healthBar = 6;
         this.max = 12;
         this.min = 1;
         break;
       case 'Medium':
-        this.healthBar = 3;
+        this.healthBar = 4;
         this.max = 100;
         this.min = 10;
         break;
-      case 'Hard':
-        this.healthBar = 1;
+      case 'Hard': // FIXME: change max/min for mult/div
+        this.healthBar = 2;
         this.max = 1000;
         this.min = 100;
     }
@@ -96,8 +97,10 @@ export class GameComponent {
     this.initDifficultyVars();
     this.equationGenerator();
     this.feedback = '';
-    this.stopwatch.reset();
-    this.stopwatch.start();
+    setTimeout(() => {
+      this.stopwatch.reset();
+      this.stopwatch.start();
+    });
   }
 
   equationGenerator() {
@@ -132,6 +135,7 @@ export class GameComponent {
     if (this.healthBar === 0) {
       this.stopwatch.stop();
       this.gameOver = true;
+      this.openCompletionScreen();
 
       this.feedback =
         "You've run out of tries. Go back to the select screen to play again!"; // FUTURE: pick a funny name to replace "tries" Like 'math juice' lol
@@ -142,6 +146,11 @@ export class GameComponent {
 
   readonly dialog = inject(MatDialog);
   openCompletionScreen() {
-    const dialogRef = this.dialog.open(GameCompleteModalComponent);
+    const dialogRef = this.dialog.open(GameCompleteModalComponent, {
+      data: {
+        score: this.userScore,
+        time: this.stopwatch.display,
+      },
+    });
   }
 }

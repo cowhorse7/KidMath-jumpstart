@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ScoreTableComponent } from './leaderboard/score-table/score-table.component';
 import { StopwatchComponent } from './game/stopwatch/stopwatch.component';
 import { GameCompleteModalComponent } from './game/game-complete-modal/game-complete-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { GameCompleteModalComponent } from './game/game-complete-modal/game-comp
     BrowserAnimationsModule,
     MatCardModule,
     MatTabsModule,
+    MatDialogModule,
     FormsModule,
   ],
   providers: [],

@@ -1,0 +1,20 @@
+/* h2 {
+  padding-left: 10px;
+} */
+mat-dialog-content {
+  background-color: rgb(69, 28, 8);
+  justify-content: center;
+  justify-items: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #d8d5d5;
+  font-family: roboto;
+}
