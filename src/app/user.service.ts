@@ -7,7 +7,7 @@ import {
   SupabaseClient,
   User,
 } from '@supabase/supabase-js';
-import { environment } from 'src/environment';
+import { environment } from 'src/environments/environment';
 
 export interface Profile {
   id?: string;
@@ -24,8 +24,8 @@ export class UserService {
   _session: AuthSession | null = null;
   constructor() {
     this.supabase = createClient(
-      environment.supabaseUrl,
-      environment.supabaseKey
+      environment.SUPABASE_URL,
+      environment.SUPABASE_ANON_KEY
     );
   }
   get session() {
@@ -73,3 +73,12 @@ export class UserService {
       .single();
   }
 }
+// supabase.auth.setAuth()
+// call this with jwt Token... somehow. Somewhere.
+// words from the ai:
+// When a user authenticates through your custom system, your server needs to sign a JWT using the Supabase JWT secret.
+// Include relevant user data in the JWT payload.
+// Set the signed JWT as a cookie on the client side.
+// 5. Call setAuth() and Use JWT Data:
+// On the client side, call supabase.auth.setAuth() with the signed JWT.
+// You can then reference the data from the JWT payload in your Row-Level Security (RLS) policies or column default values to control access to your database.

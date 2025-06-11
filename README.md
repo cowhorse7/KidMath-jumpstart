@@ -48,3 +48,5 @@ Each user is only able to win an award one time, so a user and award type are to
 6/9.1 1.5hr fixing game and forms functionality, mixing up some css
 
 6/9.2 .8hr set up score and reward tables in supabase, begin timer component
+
+6/10 1.4hr struggle with supabase. Thinking it may be better to transition to Mongo instead, though Vercel is half of what makes this battle difficult...
