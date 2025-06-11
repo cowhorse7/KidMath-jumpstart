@@ -35,5 +35,12 @@ export class StopwatchComponent implements OnDestroy {
 
   stop() {
     this.running = false;
+    this.timerSubscription?.unsubscribe();
+  }
+
+  reset() {
+    this.stop();
+    this.time = 0;
+    this.display = '00:00';
   }
 }

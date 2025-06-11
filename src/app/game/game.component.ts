@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
+import { StopwatchComponent } from './stopwatch/stopwatch.component';
+import { GameCompleteModalComponent } from './game-complete-modal/game-complete-modal.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
+  imports: [MatDialog, MatDialogModule],
 })
 export class GameComponent {
+  @ViewChild('stopwatch') stopwatch!: StopwatchComponent;
   game = false;
   gameOver = false;
   difficulty: string | null = null;
@@ -19,6 +24,8 @@ export class GameComponent {
   userScore: number = 0;
   userTime: number = 0.0;
   feedback = '';
+  max: number = 0;
+  min: number = 0;
 
   onSubmit() {
     this.game = true;
@@ -51,40 +58,46 @@ export class GameComponent {
   }
 
   setOperands() {
-    let max: number = 0;
-    let min: number = 1;
-    switch (this.difficulty) {
-      case 'Easy':
-        max = 12;
-        break;
-      case 'Medium':
-        max = 100;
-        break;
-      case 'Hard':
-        max = 1000;
-    }
-    this.operand1 = Math.floor(Math.random() * (max - min + 1)) + min;
-    this.operand2 = Math.floor(Math.random() * (max - min + 1)) + min;
+    this.operand1 =
+      Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
+    this.operand2 =
+      Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
+    if (
+      (this.operator === '/' || this.operator === '-') &&
+      this.operand2 > this.operand1
+    ) {
+      const holder = this.operand1;
+      this.operand1 = this.operand2;
+      this.operand2 = holder;
+    } //consider allowing negative subtraction on hard diff.
   }
 
-  initHealthBar() {
+  initDifficultyVars() {
     switch (this.difficulty) {
       case 'Easy':
         this.healthBar = 5;
+        this.max = 12;
+        this.min = 1;
         break;
       case 'Medium':
         this.healthBar = 3;
+        this.max = 100;
+        this.min = 10;
         break;
       case 'Hard':
         this.healthBar = 1;
+        this.max = 1000;
+        this.min = 100;
     }
   }
 
   initGame() {
     this.setOperator();
+    this.initDifficultyVars();
     this.equationGenerator();
-    this.initHealthBar();
     this.feedback = '';
+    this.stopwatch.reset();
+    this.stopwatch.start();
   }
 
   equationGenerator() {
@@ -94,7 +107,7 @@ export class GameComponent {
       case '+':
         this.answer = this.operand1! + this.operand2!;
         break;
-      case '-': // FIXME: account for smaller first operand getting negative answers
+      case '-':
         this.answer = this.operand1! - this.operand2!;
         break;
       case '/':
@@ -117,12 +130,18 @@ export class GameComponent {
       this.feedback = 'Incorrect';
     }
     if (this.healthBar === 0) {
-      this.game = false; // FIXME: make this change a little less abrupt-- pop up a modal (based on gameOver variable)!!
+      this.stopwatch.stop();
       this.gameOver = true;
+
       this.feedback =
         "You've run out of tries. Go back to the select screen to play again!"; // FUTURE: pick a funny name to replace "tries" Like 'math juice' lol
     }
     this.equationGenerator();
     this.userAnswer = null;
+  }
+
+  readonly dialog = inject(MatDialog);
+  openCompletionScreen() {
+    const dialogRef = this.dialog.open(GameCompleteModalComponent);
   }
 }

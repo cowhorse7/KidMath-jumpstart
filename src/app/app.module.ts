@@ -13,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { ScoreTableComponent } from './leaderboard/score-table/score-table.component';
 import { StopwatchComponent } from './game/stopwatch/stopwatch.component';
+import { GameCompleteModalComponent } from './game/game-complete-modal/game-complete-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { StopwatchComponent } from './game/stopwatch/stopwatch.component';
     ProfileComponent,
     ScoreTableComponent,
     StopwatchComponent,
+    GameCompleteModalComponent,
   ],
   imports: [
     BrowserModule,
