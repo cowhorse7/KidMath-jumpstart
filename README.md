@@ -52,3 +52,5 @@ Each user is only able to win an award one time, so a user and award type are to
 6/10 1.4hr struggle with supabase. Thinking it may be better to transition to Mongo instead, though I think Vercel is half of what makes this battle difficult...
 
 6/11.1 2hr create pop-up for end of game, fix/instantiate timer
+
+6/11.2 1.8hr researching other database options, refactoring supabase for magic link with email, my vercel dashboard access for my project is now broken so that's cool
