@@ -1,19 +1,16 @@
 <div class="userbox" *ngIf="!session; else profilebox">
-  <h1>Log in or sign up to track your stats!</h1>
-  <div class="login">
-    <h2>Log in!</h2>
-    <form (ngSubmit)="login()" #formLogin="ngForm">
-      <label for="email">Email</label>
-      <input
-        type="text"
-        class="email"
-        name="email"
-        required
-        [(ngModel)]="email"
-      />
-      <button type="submit" [disabled]="formLogin.invalid">Go!</button>
-    </form>
-  </div>
+  <h1>Log in to track your stats!</h1>
+  <form (ngSubmit)="login()" #formLogin="ngForm">
+    <label for="email">Email</label>
+    <input
+      type="text"
+      class="email"
+      name="email"
+      required
+      [(ngModel)]="email"
+    />
+    <button type="submit" [disabled]="formLogin.invalid">Go!</button>
+  </form>
 </div>
 <ng-template #profilebox>
   <div *ngIf="profile">
