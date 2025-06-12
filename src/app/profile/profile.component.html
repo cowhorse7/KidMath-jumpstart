@@ -3,45 +3,15 @@
   <div class="login">
     <h2>Log in!</h2>
     <form (ngSubmit)="login()" #formLogin="ngForm">
-      <label for="username">Username</label>
+      <label for="email">Email</label>
       <input
         type="text"
-        class="username"
-        name="username"
+        class="email"
+        name="email"
         required
-        [(ngModel)]="formData.username"
-      />
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="password"
-        name="password"
-        required
-        [(ngModel)]="formData.password"
+        [(ngModel)]="email"
       />
       <button type="submit" [disabled]="formLogin.invalid">Go!</button>
-    </form>
-  </div>
-  <div class="signup">
-    <h2>Sign up!</h2>
-    <form (ngSubmit)="signUp()" #formSignup="ngForm">
-      <label for="username">Username</label>
-      <input
-        type="text"
-        class="username"
-        name="username"
-        required
-        [(ngModel)]="signupFormData.username"
-      />
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="password"
-        name="password"
-        required
-        [(ngModel)]="signupFormData.password"
-      />
-      <button type="submit" [disabled]="formSignup.invalid">Go!</button>
     </form>
   </div>
 </div>
