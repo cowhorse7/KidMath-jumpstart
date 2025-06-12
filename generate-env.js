@@ -1,3 +1,5 @@
+require("dotenv").config({ path: ".env.local" });
+
 const fs = require("fs");
 const targetPath = "./src/environments/environment.prod.ts";
 const envConfigFile = `

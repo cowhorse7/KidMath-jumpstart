@@ -2,9 +2,9 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "npm run prebuild && ng serve",
+    "start": "ng serve",
     "prebuild": "node generate-env.js",
-    "build": "ng build",
+    "build": "npm run prebuild && ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -21,6 +21,7 @@
     "@angular/router": "^15.0.0",
     "@npmcli/package-json": "^6.2.0",
     "@supabase/supabase-js": "^2.49.10",
+    "dotenv": "^16.5.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

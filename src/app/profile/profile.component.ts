@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Profile, UserService } from '../user.service';
 import { AuthResponse, AuthSession } from '@supabase/supabase-js';
 

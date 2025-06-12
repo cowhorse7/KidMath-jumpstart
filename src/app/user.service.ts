@@ -7,7 +7,7 @@ import {
   SupabaseClient,
   User,
 } from '@supabase/supabase-js';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 export interface Profile {
   id?: string;
@@ -47,18 +47,19 @@ export class UserService {
   // getUser() {
   //   return this.supabase.auth.getUser().then(({ data }) => data.user);
   // }
-  usernameToEmail(username: string): string {
-    return `${username}@fake.com`;
-  }
+  // usernameToEmail(username: string): string {
+  //   return `${username}@fake.com`;
+  // }
   async signUp(username: string, password: string) {
     return await this.supabase.auth.signUp({
-      email: this.usernameToEmail(username),
+      // email: this.usernameToEmail(username),
+      email: username,
       password: password,
     });
   }
   signIn(username: string, password: string) {
     return this.supabase.auth.signInWithPassword({
-      email: this.usernameToEmail(username),
+      email: username,
       password: password,
     });
   }

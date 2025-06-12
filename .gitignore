@@ -43,5 +43,6 @@ Thumbs.db
 .vercel
 .angular
 
-src/environments/environment.ts
+environment*
 .env
+.env*.local
