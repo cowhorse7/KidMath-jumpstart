@@ -10,7 +10,8 @@ export class GameCompleteModalComponent {
   readonly dialogRef = inject(MatDialogRef<GameCompleteModalComponent>);
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { score: number; time: string }
+    @Inject(MAT_DIALOG_DATA)
+    public data: { score: number; time: string; win: boolean }
   ) {}
   close() {
     this.dialogRef.close();

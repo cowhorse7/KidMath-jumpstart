@@ -54,3 +54,5 @@ Each user is only able to win an award one time, so a user and award type are to
 6/11.1 2hr create pop-up for end of game, fix/instantiate timer
 
 6/11.2 1.8hr researching other database options, refactoring supabase for magic link with email, my vercel dashboard access for my project is now broken so that's cool
+
+6/12 1.8hr finally handled auth stuff, regular supabase login successful but no trigger filling of profile table yet. Also set a goal for the user in-game and set visual responses appropriately.

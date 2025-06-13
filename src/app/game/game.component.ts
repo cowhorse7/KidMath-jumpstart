@@ -12,6 +12,7 @@ export class GameComponent {
   @ViewChild('stopwatch') stopwatch!: StopwatchComponent;
   game = false;
   gameOver = false;
+  win = false;
   difficulty: string | null = null;
   gameMode: string | null = null;
   operator: string | null = null;
@@ -25,10 +26,12 @@ export class GameComponent {
   feedback = '';
   max: number = 0;
   min: number = 0;
+  goal: number = 100;
 
   onSubmit() {
     this.game = true;
     this.gameOver = false;
+    this.win = false;
     this.initGame();
   }
   back() {
@@ -132,13 +135,12 @@ export class GameComponent {
       this.healthBar! -= 1;
       this.feedback = 'Incorrect';
     }
-    if (this.healthBar === 0) {
+    if (this.userScore === this.goal || this.healthBar === 0) {
       this.stopwatch.stop();
       this.gameOver = true;
       this.openCompletionScreen();
-
-      this.feedback =
-        "You've run out of tries. Go back to the select screen to play again!"; // FUTURE: pick a funny name to replace "tries" Like 'math juice' lol
+      if (this.userScore === this.goal) this.win = true;
+      this.feedback += ' Go back to the select screen to play again!';
     }
     this.equationGenerator();
     this.userAnswer = null;
@@ -150,6 +152,7 @@ export class GameComponent {
       data: {
         score: this.userScore,
         time: this.stopwatch.display,
+        win: this.win,
       },
     });
   }
