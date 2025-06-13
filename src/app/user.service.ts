@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createClient, AuthSession, User } from '@supabase/supabase-js';
 import { environment } from '../environments/environment.prod';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SupabaseService {
@@ -8,6 +9,17 @@ export class SupabaseService {
     environment.SUPABASE_URL,
     environment.SUPABASE_ANON_KEY
   );
+  private sessionSubject = new BehaviorSubject<any>(null);
+  session$ = this.sessionSubject.asObservable();
+
+  constructor() {
+    this.supabase.auth.getSession().then(({ data }) => {
+      this.sessionSubject.next(data.session);
+    });
+    this.supabase.auth.onAuthStateChange((_event, session) => {
+      this.sessionSubject.next(session);
+    });
+  }
 
   getSession() {
     return this.supabase.auth.getSession().then(({ data }) => data.session);

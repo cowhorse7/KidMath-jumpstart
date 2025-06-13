@@ -19,22 +19,25 @@ export class ProfileComponent implements OnInit {
 
   constructor(private supabase: SupabaseService) {}
 
-  // async profileDeclaration() {
-  async ngOnInit() {
-    this.session = await this.supabase.getSession();
-    if (this.session && this.session.user) {
-      this.loadProfile(this.session.user);
-    }
-    // Subscribe to auth state changes to update UI reactively
-    this.supabase.supabase.auth.onAuthStateChange((_event, session) => {
-      this.session = session;
-      if (session && session.user) {
-        this.loadProfile(session.user);
-      } else {
-        this.profile = null;
-      }
-    });
+  ngOnInit(): void {
+    this.supabase.session$.subscribe((session) => (this.session = session));
   }
+  // async profileDeclaration() {
+  // async ngOnInit() {
+  //   this.session = await this.supabase.getSession();
+  //   if (this.session && this.session.user) {
+  //     this.loadProfile(this.session.user);
+  //   }
+  //   // Subscribe to auth state changes to update UI reactively
+  //   this.supabase.supabase.auth.onAuthStateChange((_event, session) => {
+  //     this.session = session;
+  //     if (session && session.user) {
+  //       this.loadProfile(session.user);
+  //     } else {
+  //       this.profile = null;
+  //     }
+  //   });
+  // }
 
   // async getProfile() {
   //   try {
