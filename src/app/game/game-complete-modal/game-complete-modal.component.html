@@ -5,6 +5,6 @@
 
   <div *ngIf="!win; else win"><p>You did not reach the goal.</p></div>
   <ng-template #win><p>You reached the goal!</p></ng-template>
-  <p>Your score: {{ data.score }}</p>
-  <p>Your time: {{ data.time }}</p>
+  <p>Score: {{ data.score }}</p>
+  <p>Time: {{ data.time }}</p>
 </mat-dialog-content>

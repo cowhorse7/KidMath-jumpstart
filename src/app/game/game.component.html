@@ -102,31 +102,42 @@
     <div class="parent">
       <div class="left">
         <p>Theme:</p>
+        <br />
         <p>{{ gameMode }}</p>
+        <br />
         <p>Difficulty:</p>
+        <br />
         <p>{{ difficulty }}</p>
       </div>
       <div class="center">
         <button class="arrow" (click)="back()">←</button>
         <!-- <button (click)="initGame()">Start!</button> -->
         <img src="assets/images/gameplay.png" alt="placeholder image" />
-        <p>{{ operand1 }} {{ operator }} {{ operand2 }} = ___</p>
+        <br />
+        <p class="equation">
+          {{ operand1 }} {{ operator }} {{ operand2 }} = ___
+        </p>
+        <br />
         <!--consider a div and/or span ↑-->
         <form #answerForm="ngForm" (ngSubmit)="checkAnswer()">
-          <p>
-            Your answer:<input
+          <p class="input">
+            Your answer:&nbsp;<input
               type="number"
               name="answerForm"
               [(ngModel)]="userAnswer"
               required
-            /><button type="submit" [disabled]="gameOver">Submit</button>
+            /><button type="submit" class="answer" [disabled]="gameOver">
+              Submit
+            </button>
           </p>
         </form>
+        <br />
         <p class="feedback">{{ feedback }}</p>
+        <br />
 
         <div>
           <p class="healthBar">
-            Attempts remaining:<span
+            Attempts remaining:&nbsp;<span
               *ngFor="let hp of [].constructor(healthBar)"
               >&bull;</span
             >
@@ -135,8 +146,11 @@
       </div>
       <div class="right">
         <p>Score:</p>
+        <br />
         <p>{{ userScore }}</p>
+        <br />
         <p>Time:</p>
+        <br />
         <app-stopwatch #stopwatch></app-stopwatch>
       </div>
     </div>

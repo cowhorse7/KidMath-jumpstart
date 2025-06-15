@@ -1,0 +1,9 @@
+span {
+  font-size: xx-large;
+  color: gold;
+  font-family: cursive;
+}
+div {
+  display: flex;
+  justify-content: center;
+}
