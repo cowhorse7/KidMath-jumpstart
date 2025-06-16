@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { SupabaseService } from '../user.service';
-import { AuthResponse, AuthSession } from '@supabase/supabase-js';
+import { Component, OnInit } from '@angular/core';
+import { SupabaseService } from '../service/supabase.service';
+import { AuthSession } from '@supabase/supabase-js';
 
 @Component({
   selector: 'app-profile',
@@ -21,69 +21,13 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.supabase.session$.subscribe((session) => (this.session = session));
+    if (this.session) this.loadProfile;
   }
-  // async profileDeclaration() {
-  // async ngOnInit() {
-  //   this.session = await this.supabase.getSession();
-  //   if (this.session && this.session.user) {
-  //     this.loadProfile(this.session.user);
-  //   }
-  //   // Subscribe to auth state changes to update UI reactively
-  //   this.supabase.supabase.auth.onAuthStateChange((_event, session) => {
-  //     this.session = session;
-  //     if (session && session.user) {
-  //       this.loadProfile(session.user);
-  //     } else {
-  //       this.profile = null;
-  //     }
-  //   });
-  // }
 
-  // async getProfile() {
-  //   try {
-  //     this.loading = true;
-  //     const { user } = this.session;
-  //     const {
-  //       data: profile,
-  //       error,
-  //       status,
-  //     } = await this.supabase.Profile(user);
-  //     if (error && status !== 406) {
-  //       throw error;
-  //     }
-  //     if (profile) {
-  //       this.profile = profile;
-  //     }
-  //   } catch (error) {
-  //     if (error instanceof Error) {
-  //       alert(error.message);
-  //     }
-  //   } finally {
-  //     this.loading = false;
-  //   }
-  // }
-
-  // async onSubmit(
-  //   passed: Promise<AuthResponse> | PromiseLike<{ error: any }> | { error: any }
-  // ): Promise<void> {
-  //   try {
-  //     this.loading = true;
-  //     const { error } = await passed;
-  //     if (error) {
-  //       throw error;
-  //     }
-  //   } catch (error) {
-  //     if (error instanceof Error) {
-  //       alert(error.message);
-  //     }
-  //   } finally {
-  //     this.loading = false;
-  //   }
-  // }
   async loadProfile(user: any) {
     this.loading = true;
-    const { data, error } = await this.supabase.getProfile(user);
-    if (!error) this.profile = data;
+    const { data, error } = await this.supabase.getUsername(user);
+    if (!error) this.username = data.username;
     this.loading = false;
   }
 
@@ -98,5 +42,6 @@ export class ProfileComponent implements OnInit {
     await this.supabase.signOut();
     this.session = null;
     this.profile = null;
+    this.username = '';
   }
 }

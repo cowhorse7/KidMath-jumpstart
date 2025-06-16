@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { createClient, AuthSession, User } from '@supabase/supabase-js';
-import { environment } from '../environments/environment.prod';
+import { createClient, User } from '@supabase/supabase-js';
+import { environment } from '../../environments/environment.prod';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -41,10 +41,10 @@ export class SupabaseService {
     return this.supabase.auth.signOut();
   }
 
-  getProfile(user: User) {
+  getUsername(user: User) {
     return this.supabase
       .from('Profile')
-      .select('username, best_score, best_time')
+      .select('username')
       .eq('id', user.id)
       .single();
   }

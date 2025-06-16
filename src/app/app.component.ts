@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SupabaseService } from './user.service';
+import { SupabaseService } from './service/supabase.service';
 
 @Component({
   selector: 'app-root',
