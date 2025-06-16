@@ -58,3 +58,5 @@ Each user is only able to win an award one time, so a user and award type are to
 6/12 1.8hr finally handled auth stuff, regular supabase login successful but no trigger filling of profile table yet. Also set a goal for the user in-game and set visual responses appropriately.
 
 6/14 .5hr css improvements
+
+6/15 1hr FINALLY got supabase trigger function to work properly, new users are auto-populated to the public profile table
