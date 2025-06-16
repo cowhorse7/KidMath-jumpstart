@@ -37,6 +37,7 @@ export class ProfileComponent implements OnInit {
   }
 
   async loadProfile(user: any) {
+    //FIXME: add in logic to fetch awards
     this.loading = true;
     const { data, error } = await this.supabase.getUsername(user);
     if (!error) this.username = data.username;

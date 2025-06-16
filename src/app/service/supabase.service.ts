@@ -31,20 +31,20 @@ export class SupabaseService {
     return await this.supabase.auth.getUser().then(({ data }) => data.user);
   }
 
-  signIn(email: string) {
-    return this.supabase.auth.signInWithOtp({
+  async signIn(email: string) {
+    return await this.supabase.auth.signInWithOtp({
       email: email,
       // options: {
       // emailRedirectTo: 'https://jumpstart-nu.vercel.app/profile',}
     });
   }
 
-  signOut() {
-    return this.supabase.auth.signOut();
+  async signOut() {
+    return await this.supabase.auth.signOut();
   }
 
-  getUsername(user: User) {
-    return this.supabase
+  async getUsername(user: User) {
+    return await this.supabase
       .from('Profile')
       .select('username')
       .eq('id', user.id)
@@ -52,14 +52,14 @@ export class SupabaseService {
   }
   async checkUsername(username: string) {
     return await this.supabase
-      .from('profiles')
+      .from('Profile')
       .select('id')
       .eq('username', username)
       .single();
   }
   async updateUsername(username: string, userId: string) {
     return await this.supabase
-      .from('profiles')
+      .from('Profile')
       .update({ username: username })
       .eq('id', userId);
   }

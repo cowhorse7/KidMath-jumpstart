@@ -61,4 +61,4 @@ Each user is only able to win an award one time, so a user and award type are to
 
 6/15 1hr FINALLY got supabase trigger function to work properly, new users are auto-populated to the public profile table
 
-6/16 xx edit db schema and policies
+6/16 1.5hr edit db schema and policies; add functionality for username changes
