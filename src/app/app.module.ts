@@ -10,11 +10,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ProfileComponent } from './profile/profile.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScoreTableComponent } from './leaderboard/score-table/score-table.component';
 import { StopwatchComponent } from './game/stopwatch/stopwatch.component';
 import { GameCompleteModalComponent } from './game/game-complete-modal/game-complete-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTabsModule,
     MatDialogModule,
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

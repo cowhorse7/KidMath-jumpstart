@@ -21,12 +21,14 @@ export class SupabaseService {
     });
   }
 
-  getSession() {
-    return this.supabase.auth.getSession().then(({ data }) => data.session);
+  async getSession() {
+    return await this.supabase.auth
+      .getSession()
+      .then(({ data }) => data.session);
   }
 
-  getUser() {
-    return this.supabase.auth.getUser().then(({ data }) => data.user);
+  async getUser() {
+    return await this.supabase.auth.getUser().then(({ data }) => data.user);
   }
 
   signIn(email: string) {
@@ -47,5 +49,18 @@ export class SupabaseService {
       .select('username')
       .eq('id', user.id)
       .single();
+  }
+  async checkUsername(username: string) {
+    return await this.supabase
+      .from('profiles')
+      .select('id')
+      .eq('username', username)
+      .single();
+  }
+  async updateUsername(username: string, userId: string) {
+    return await this.supabase
+      .from('profiles')
+      .update({ username: username })
+      .eq('id', userId);
   }
 }
