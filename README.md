@@ -1,4 +1,7 @@
 # MathForKids
+## (New!) Try it out!
+
+https://jumpstart-nu.vercel.app/ ←here is the link to my deployed website! It is still under construction, but is open to mess around a bit!
 
 ## The Dream
 
