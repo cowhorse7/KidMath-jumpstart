@@ -6,7 +6,7 @@ I grew up playing games like Mavis Beacon and Cluefinders, and I loved every min
 
 ## Stack
 
-I'm still not fully decided as of now, but planning on Angular as the code base. A good chance of MongoDB as the database, used to store usernames and scores, and possibly even problems. Users won't be required to log in, and I'm thinking that not-logged-in users may have their scores saved for a limited time.
+I'm still not fully decided as of now (5/31), but planning on Angular as the code base. A good chance of MongoDB as the database, used to store usernames and scores, and possibly even problems. Users won't be required to log in, and I'm thinking that not-logged-in users may have their scores saved for a limited time.
 
 ## Timeline
 
@@ -22,8 +22,11 @@ I have until the 16th of June to complete the project. I will be presenting my p
 
 ![Alt text](./src/assets/images/erd_image)
 Each user is only able to win an award one time, so a user and award type are together unique in the award table.
+![Alt text](./src/assets/images/system%20design.png)
+The basic system design showing how the site works. It's pretty simple: a user logs in (or doesn't), they play the game, their scores are saved.
 ![Alt text](./src/assets/images/gameplay.png)
 ![Alt text](./src/assets/images/pageDesigns.png)
+These are my preliminary page designs
 
 ## Progress and Time Spent
 
