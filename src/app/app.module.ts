@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { AnimationWindowComponent } from './game/animation-window/animation-window.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
     ScoreTableComponent,
     StopwatchComponent,
     GameCompleteModalComponent,
+    AnimationWindowComponent,
   ],
   imports: [
     BrowserModule,

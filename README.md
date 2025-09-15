@@ -1,4 +1,5 @@
 # MathForKids
+
 ## (New!) Try it out!
 
 https://jumpstart-nu.vercel.app/ ←here is the link to my deployed website! It is still under construction, but is open to mess around a bit!
@@ -68,3 +69,5 @@ These are my preliminary page designs
 6/15 1hr FINALLY got supabase trigger function to work properly, new users are auto-populated to the public profile table
 
 6/16 1.5hr edit db schema and policies; add functionality for username changes
+
+9/14 Hey I'm back to visit my special, personal project! I missed it. Tonight I've been messing with the CSS and patching up some game mechanics.

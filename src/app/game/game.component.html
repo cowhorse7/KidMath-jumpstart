@@ -34,7 +34,9 @@
         />
         <label for="hard" class="radio-button">Hard</label>
       </div>
-      <img src="assets/images/gameplay.png" alt="placeholder image" />
+      <div class="image">
+        <img src="assets/images/gameplay.png" alt="placeholder image" />
+      </div>
       <div class="radio-button-group" id="game-mode">
         <input
           type="radio"
@@ -87,14 +89,15 @@
         />
         <label for="mix" class="radio-button">Clouds (mixed)</label>
       </div>
-      <div class="spacer"></div>
-      <button
-        type="submit"
-        class="radio-button submit-button"
-        [disabled]="!difficulty || !gameMode"
-      >
-        Start!
-      </button>
+      <div class="spacer-and-submit">
+        <button
+          type="submit"
+          class="radio-button submit-button"
+          [disabled]="!difficulty || !gameMode"
+        >
+          Start!
+        </button>
+      </div>
     </form>
   </div>
 
@@ -112,7 +115,7 @@
       <div class="center">
         <button class="arrow" (click)="back()">←</button>
         <!-- <button (click)="initGame()">Start!</button> -->
-        <img src="assets/images/gameplay.png" alt="placeholder image" />
+        <app-animation-window></app-animation-window>
         <br />
         <p class="equation">
           {{ operand1 }} {{ operator }} {{ operand2 }} = ___

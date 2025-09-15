@@ -36,6 +36,7 @@ export class GameComponent {
   }
   back() {
     this.game = false;
+    this.userScore = 0;
   }
 
   setOperator() {
@@ -52,8 +53,9 @@ export class GameComponent {
       case 'Volcano':
         this.operator = '*';
         break;
-      case 'Clouds': //FIXME: add some kind of randomization to this
-        this.operator = '+';
+      case 'Clouds':
+        const operandArray = ['+', '-', '/', '*'];
+        this.operator = operandArray[Math.floor(Math.random() * 4)];
         break;
       default:
         throw new Error('no defined game mode');
@@ -61,19 +63,19 @@ export class GameComponent {
   }
 
   setOperands() {
+    if (this.gameMode === 'Clouds') this.setOperator();
     this.operand1 =
       Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
     this.operand2 =
       Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
-    if (
-      (this.operator === '/' || this.operator === '-') &&
-      this.operand2 > this.operand1
-    ) {
+    if (this.operator === '-' && this.operand2 > this.operand1) {
       const holder = this.operand1;
       this.operand1 = this.operand2;
       this.operand2 = holder;
     } //consider allowing negative subtraction on hard diff.
-    // also, we want division to get whole numbers
+    if (this.operator === '/') {
+      this.operand1 = this.operand1 * this.operand2;
+    }
   }
 
   initDifficultyVars() {

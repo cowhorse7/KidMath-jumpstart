@@ -14,11 +14,14 @@ p {
   font-size: 3em;
   font-family: cursive;
 }
-.spacer {
-  height: 5px;
+.spacer-and-submit {
+  padding-top: 5px;
 }
-.radio-button submit-button {
-  padding-bottom: 4vh;
+.radio-button.submit-button:disabled {
+  background: rgb(149, 149, 149);
+  border-color: rgb(148, 114, 27);
+  color: rgb(79, 72, 69);
+  cursor: auto;
 }
 .radio-button-group {
   padding-top: 1em;
