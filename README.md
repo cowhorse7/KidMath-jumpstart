@@ -71,3 +71,5 @@ These are my preliminary page designs
 6/16 1.5hr edit db schema and policies; add functionality for username changes
 
 9/14 Hey I'm back to visit my special, personal project! I missed it. Tonight I've been messing with the CSS and patching up some game mechanics.
+
+12/7 I came back to make sure everything was running properly and to run some necessary updates/patches. I apparently broke something when I did so, but I sadly don't have time right now to figure it out.
