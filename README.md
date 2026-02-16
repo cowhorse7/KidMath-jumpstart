@@ -73,3 +73,5 @@ These are my preliminary page designs
 9/14 Hey I'm back to visit my special, personal project! I missed it. Tonight I've been messing with the CSS and patching up some game mechanics.
 
 12/7 I came back to make sure everything was running properly and to run some necessary updates/patches. I apparently broke something when I did so, but I sadly don't have time right now to figure it out.
+
+2/16/26 After breaking everything in December, I've been hunting for a time to get the app up and running again. I learned a bit about dependency packages and Angular version migrations. I've made a successful migration to Angular v16, but I'm going to have to leave it there for now. I'm looking forward to a full migration to later versions of Angular and cleaning up the application code.
