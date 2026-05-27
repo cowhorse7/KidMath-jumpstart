@@ -1,107 +1,101 @@
 <main>
-  <div class="modebox" *ngIf="!game; else gamebox">
-    <p>Choose a game mode and difficulty:</p>
-    <form #gameForm="ngForm" (ngSubmit)="onSubmit()">
-      <div class="radio-button-group" id="difficulty">
-        <input
-          type="radio"
-          id="easy"
-          name="difficulty"
-          value="Easy"
-          hidden
-          [(ngModel)]="difficulty"
-          required
-        />
-        <label for="easy" class="radio-button">Easy</label>
-
-        <input
-          type="radio"
-          id="medium"
-          name="difficulty"
-          value="Medium"
-          hidden
-          [(ngModel)]="difficulty"
-        />
-        <label for="medium" class="radio-button">Medium</label>
-
-        <input
-          type="radio"
-          id="hard"
-          name="difficulty"
-          value="Hard"
-          hidden
-          [(ngModel)]="difficulty"
-        />
-        <label for="hard" class="radio-button">Hard</label>
-      </div>
-      <div class="image">
-        <img src="assets/images/gameplay.png" alt="placeholder image" />
-      </div>
-      <div class="radio-button-group" id="game-mode">
-        <input
-          type="radio"
-          id="sub"
-          name="game-mode"
-          value="Desert"
-          hidden
-          [(ngModel)]="gameMode"
-          required
-        />
-        <label for="sub" class="radio-button">Desert (subtraction)</label>
-
-        <input
-          type="radio"
-          id="add"
-          name="game-mode"
-          value="Ocean"
-          hidden
-          [(ngModel)]="gameMode"
-        />
-        <label for="add" class="radio-button">Ocean (addition)</label>
-
-        <input
-          type="radio"
-          id="div"
-          name="game-mode"
-          value="Forest"
-          hidden
-          [(ngModel)]="gameMode"
-        />
-        <label for="div" class="radio-button">Forest (division)</label>
-
-        <input
-          type="radio"
-          id="mult"
-          name="game-mode"
-          value="Mountain"
-          hidden
-          [(ngModel)]="gameMode"
-        />
-        <label for="mult" class="radio-button">Mountain (mulitplication)</label>
-
-        <input
-          type="radio"
-          id="mix"
-          name="game-mode"
-          value="Clouds"
-          hidden
-          [(ngModel)]="gameMode"
-        />
-        <label for="mix" class="radio-button">Clouds (mixed)</label>
-      </div>
-      <div class="spacer-and-submit">
-        <button
-          type="submit"
-          class="radio-button submit-button"
-          [disabled]="!difficulty || !gameMode"
-        >
-          Start!
-        </button>
-      </div>
-    </form>
-  </div>
-
-  <ng-template #gamebox>
+  @if (!game) {
+    <div class="modebox">
+      <p>Choose a game mode and difficulty:</p>
+      <form #gameForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="radio-button-group" id="difficulty">
+          <input
+            type="radio"
+            id="easy"
+            name="difficulty"
+            value="Easy"
+            hidden
+            [(ngModel)]="difficulty"
+            required
+            />
+          <label for="easy" class="radio-button">Easy</label>
+          <input
+            type="radio"
+            id="medium"
+            name="difficulty"
+            value="Medium"
+            hidden
+            [(ngModel)]="difficulty"
+            />
+          <label for="medium" class="radio-button">Medium</label>
+          <input
+            type="radio"
+            id="hard"
+            name="difficulty"
+            value="Hard"
+            hidden
+            [(ngModel)]="difficulty"
+            />
+          <label for="hard" class="radio-button">Hard</label>
+        </div>
+        <div class="image">
+          <img src="assets/images/gameplay.png" alt="placeholder image" />
+        </div>
+        <div class="radio-button-group" id="game-mode">
+          <input
+            type="radio"
+            id="sub"
+            name="game-mode"
+            value="Desert"
+            hidden
+            [(ngModel)]="gameMode"
+            required
+            />
+          <label for="sub" class="radio-button">Desert (subtraction)</label>
+          <input
+            type="radio"
+            id="add"
+            name="game-mode"
+            value="Ocean"
+            hidden
+            [(ngModel)]="gameMode"
+            />
+          <label for="add" class="radio-button">Ocean (addition)</label>
+          <input
+            type="radio"
+            id="div"
+            name="game-mode"
+            value="Forest"
+            hidden
+            [(ngModel)]="gameMode"
+            />
+          <label for="div" class="radio-button">Forest (division)</label>
+          <input
+            type="radio"
+            id="mult"
+            name="game-mode"
+            value="Mountain"
+            hidden
+            [(ngModel)]="gameMode"
+            />
+          <label for="mult" class="radio-button">Mountain (mulitplication)</label>
+          <input
+            type="radio"
+            id="mix"
+            name="game-mode"
+            value="Clouds"
+            hidden
+            [(ngModel)]="gameMode"
+            />
+          <label for="mix" class="radio-button">Clouds (mixed)</label>
+        </div>
+        <div class="spacer-and-submit">
+          <button
+            type="submit"
+            class="radio-button submit-button"
+            [disabled]="!difficulty || !gameMode"
+            >
+            Start!
+          </button>
+        </div>
+      </form>
+    </div>
+  } @else {
     <div class="parent">
       <div class="left">
         <p>Theme:</p>
@@ -125,37 +119,38 @@
         <form #answerForm="ngForm" (ngSubmit)="checkAnswer()">
           <p class="input">
             Your answer:&nbsp;<input
-              type="number"
-              name="answerForm"
-              [(ngModel)]="userAnswer"
-              required
+            type="number"
+            name="answerForm"
+            [(ngModel)]="userAnswer"
+            required
             /><button type="submit" class="answer" [disabled]="gameOver">
-              Submit
-            </button>
-          </p>
-        </form>
-        <br />
-        <p class="feedback">{{ feedback }}</p>
-        <br />
-
-        <div>
-          <p class="healthBar">
-            Attempts remaining:&nbsp;<span
-              *ngFor="let hp of [].constructor(healthBar)"
-              >&bull;</span
+            Submit
+          </button>
+        </p>
+      </form>
+      <br />
+      <p class="feedback">{{ feedback }}</p>
+      <br />
+      <div>
+        <p class="healthBar">
+          Attempts remaining:&nbsp;@for (hp of [].constructor(healthBar); track hp) {
+          <span
+            >&bull;</span
             >
-          </p>
-        </div>
-      </div>
-      <div class="right">
-        <p>Score:</p>
-        <br />
-        <p>{{ userScore }}</p>
-        <br />
-        <p>Time:</p>
-        <br />
-        <app-stopwatch #stopwatch></app-stopwatch>
+          }
+        </p>
       </div>
     </div>
-  </ng-template>
+    <div class="right">
+      <p>Score:</p>
+      <br />
+      <p>{{ userScore }}</p>
+      <br />
+      <p>Time:</p>
+      <br />
+      <app-stopwatch #stopwatch></app-stopwatch>
+    </div>
+  </div>
+}
+
 </main>

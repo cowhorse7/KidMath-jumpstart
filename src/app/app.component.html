@@ -1,35 +1,39 @@
 <html>
   <main>
     <nav mat-tab-nav-bar class="mat-nav" [tabPanel]="tabPanel">
-      <a
-        mat-tab-link
-        *ngFor="let link of leftLinks"
-        [routerLink]="link.route"
-        routerLinkActive
-        #rla="routerLinkActive"
-        [active]="rla.isActive"
-      >
-        {{ link.label }}
-      </a>
+      @for (link of leftLinks; track link) {
+        <a
+          mat-tab-link
+          [routerLink]="link.route"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [active]="rla.isActive"
+          >
+          {{ link.label }}
+        </a>
+      }
       <span class="spacer"></span>
-      <a
-        mat-tab-link
-        *ngFor="let link of rightLinks"
-        [routerLink]="link.route"
-        routerLinkActive
-        #rla="routerLinkActive"
-        [active]="rla.isActive"
-      >
-        {{ link.label }}
-      </a>
+      @for (link of rightLinks; track link) {
+        <a
+          mat-tab-link
+          [routerLink]="link.route"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [active]="rla.isActive"
+          >
+          {{ link.label }}
+        </a>
+      }
     </nav>
     <mat-tab-nav-panel #tabPanel>
       <router-outlet></router-outlet
-    ></mat-tab-nav-panel>
-    <div class="heading" *ngIf="router.url === '/'">
-      <h1>Welcome!</h1>
-      <h2>choose a tab to get started</h2>
-    </div>
-  </main>
-  <p class="footer">by cowhorse7 on Github</p>
-</html>
+      ></mat-tab-nav-panel>
+      @if (router.url === '/') {
+        <div class="heading">
+          <h1>Welcome!</h1>
+          <h2>choose a tab to get started</h2>
+        </div>
+      }
+    </main>
+    <p class="footer">by cowhorse7 on Github</p>
+  </html>

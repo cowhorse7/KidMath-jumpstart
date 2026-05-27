@@ -3,8 +3,11 @@
     Game Over<button mat-button mat-dialog-close class="close-btn">X</button>
   </h2>
 
-  <div *ngIf="!win; else win"><p>You did not reach the goal.</p></div>
-  <ng-template #win><p>You reached the goal!</p></ng-template>
+  @if (!data.win) {
+    <div><p>You did not reach the goal.</p></div>
+  } @else {
+    <p>You reached the goal!</p>
+  }
   <p>Score: {{ data.score }}</p>
   <p>Time: {{ data.time }}</p>
 </mat-dialog-content>

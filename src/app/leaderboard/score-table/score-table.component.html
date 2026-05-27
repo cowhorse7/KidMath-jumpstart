@@ -1,12 +1,18 @@
 <table class="scores">
   <thead>
     <tr>
-      <th *ngFor="let column of columns">{{ column }}</th>
+      @for (column of columns; track column) {
+        <th>{{ column }}</th>
+      }
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of data">
-      <td *ngFor="let column of columns">{{ row[column] }}</td>
-    </tr>
+    @for (row of data; track row) {
+      <tr>
+        @for (column of columns; track column) {
+          <td>{{ row[column] }}</td>
+        }
+      </tr>
+    }
   </tbody>
 </table>
