@@ -4,9 +4,10 @@ import { GameCompleteModalComponent } from './game-complete-modal/game-complete-
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-game',
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css'],
+    selector: 'app-game',
+    templateUrl: './game.component.html',
+    styleUrls: ['./game.component.css'],
+    standalone: false
 })
 export class GameComponent {
   @ViewChild('stopwatch') stopwatch!: StopwatchComponent;

@@ -2,9 +2,10 @@ import { Component, OnDestroy } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-stopwatch',
-  templateUrl: './stopwatch.component.html',
-  styleUrls: ['./stopwatch.component.css'],
+    selector: 'app-stopwatch',
+    templateUrl: './stopwatch.component.html',
+    styleUrls: ['./stopwatch.component.css'],
+    standalone: false
 })
 export class StopwatchComponent implements OnDestroy {
   public time: number = 0;

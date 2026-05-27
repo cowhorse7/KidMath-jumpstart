@@ -2,9 +2,10 @@ import { Component, Inject, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-game-complete-modal',
-  templateUrl: './game-complete-modal.component.html',
-  styleUrls: ['./game-complete-modal.component.css'],
+    selector: 'app-game-complete-modal',
+    templateUrl: './game-complete-modal.component.html',
+    styleUrls: ['./game-complete-modal.component.css'],
+    standalone: false
 })
 export class GameCompleteModalComponent {
   readonly dialogRef = inject(MatDialogRef<GameCompleteModalComponent>);

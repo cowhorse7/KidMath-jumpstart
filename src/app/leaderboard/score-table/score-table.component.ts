@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-score-table',
-  templateUrl: './score-table.component.html',
-  styleUrls: ['./score-table.component.css'],
+    selector: 'app-score-table',
+    templateUrl: './score-table.component.html',
+    styleUrls: ['./score-table.component.css'],
+    standalone: false
 })
 export class ScoreTableComponent {
   @Input()
