@@ -75,3 +75,5 @@ These are my preliminary page designs
 12/7 I came back to make sure everything was running properly and to run some necessary updates/patches. I apparently broke something when I did so, but I sadly don't have time right now to figure it out.
 
 2/16/26 After breaking everything in December, I've been hunting for a time to get the app up and running again. I learned a bit about dependency packages and Angular version migrations. I've made a successful migration to Angular v16, but I'm going to have to leave it there for now. I'm looking forward to a full migration to later versions of Angular and cleaning up the application code.
+
+5/27/26 Continued Angular version migrations. I also realized it would be nice if the game displayed the correct answer when a user inputs an incorrect answer.
