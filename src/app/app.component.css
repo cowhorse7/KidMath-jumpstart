@@ -41,21 +41,22 @@ p {
   margin: 0;
   color: #b6922e;
 }
-a {
+
+a,
+a:visited {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 2.2em;
   color: goldenrod !important;
-}
-a:visited {
-  color: goldenrod !important;
   text-decoration: none;
 }
+
 .mat-nav {
   background: black;
-  border-bottom: 2px solid rgb(69, 28, 8);
-  color: blue;
+  border-bottom: none !important;
 }
-.mat-nav .mat-mdc-tab-link {
+
+.mat-nav .mat-mdc-tab-link,
+.mat-nav .mdc-tab--active {
   background: rgb(69, 28, 8);
   margin-right: 8px;
   border-radius: 10px 10px 0 0;
@@ -64,21 +65,34 @@ a:visited {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
   border: 1px solid #9c6c23;
   border-bottom: none;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    box-shadow 0.2s;
 }
+
+.mat-nav .mdc-tab--active,
+.mat-nav .mat-mdc-tab-link.mdc-tab--active {
+  background-color: rgb(110, 48, 19) !important;
+  border-bottom: none;
+}
+
 .heading {
   position: fixed;
   width: 100vw;
   height: 100vh;
   justify-items: center;
 }
+
 ::ng-deep
   .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active
   .mdc-tab__text-label {
-  color: rgb(237, 235, 213) !important;
+  color: rgb(250, 248, 232) !important;
+  text-decoration: underline;
 }
+
 ::ng-deep
   .mat-mdc-tab-link:not(.mat-mdc-tab-disabled)
   .mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
-  border: 1px solid rgb(110, 48, 19) !important;
+  border: none !important;
 }

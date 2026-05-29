@@ -15,7 +15,7 @@ p {
   font-family: cursive;
 }
 .spacer-and-submit {
-  padding-top: 5px;
+  padding-top: 20px;
 }
 .radio-button.submit-button:disabled {
   background: rgb(149, 149, 149);
@@ -38,7 +38,9 @@ p {
   color: rgb(69, 28, 8);
   cursor: pointer;
   user-select: none;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 /* Hide the native radio input but keep it accessible */

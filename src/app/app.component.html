@@ -1,39 +1,39 @@
 <html>
   <main>
     <nav mat-tab-nav-bar class="mat-nav" [tabPanel]="tabPanel">
-      @for (link of leftLinks; track link) {
+      @for (link of leftLinks; track link.label) {
         <a
           mat-tab-link
           [routerLink]="link.route"
           routerLinkActive
           #rla="routerLinkActive"
           [active]="rla.isActive"
-          >
+        >
           {{ link.label }}
         </a>
       }
       <span class="spacer"></span>
-      @for (link of rightLinks; track link) {
+      @for (link of rightLinks; track link.label) {
         <a
           mat-tab-link
           [routerLink]="link.route"
           routerLinkActive
           #rla="routerLinkActive"
           [active]="rla.isActive"
-          >
+        >
           {{ link.label }}
         </a>
       }
     </nav>
     <mat-tab-nav-panel #tabPanel>
       <router-outlet></router-outlet
-      ></mat-tab-nav-panel>
-      @if (router.url === '/') {
-        <div class="heading">
-          <h1>Welcome!</h1>
-          <h2>choose a tab to get started</h2>
-        </div>
-      }
-    </main>
-    <p class="footer">by cowhorse7 on Github</p>
-  </html>
+    ></mat-tab-nav-panel>
+    @if (router.url === "/") {
+      <div class="heading">
+        <h1>Welcome!</h1>
+        <h2>choose a tab to get started</h2>
+      </div>
+    }
+  </main>
+  <p class="footer">by cowhorse7 on Github</p>
+</html>

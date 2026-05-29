@@ -12,7 +12,7 @@
             hidden
             [(ngModel)]="difficulty"
             required
-            />
+          />
           <label for="easy" class="radio-button">Easy</label>
           <input
             type="radio"
@@ -21,7 +21,7 @@
             value="Medium"
             hidden
             [(ngModel)]="difficulty"
-            />
+          />
           <label for="medium" class="radio-button">Medium</label>
           <input
             type="radio"
@@ -30,7 +30,7 @@
             value="Hard"
             hidden
             [(ngModel)]="difficulty"
-            />
+          />
           <label for="hard" class="radio-button">Hard</label>
         </div>
         <div class="image">
@@ -45,7 +45,7 @@
             hidden
             [(ngModel)]="gameMode"
             required
-            />
+          />
           <label for="sub" class="radio-button">Desert (subtraction)</label>
           <input
             type="radio"
@@ -54,7 +54,7 @@
             value="Ocean"
             hidden
             [(ngModel)]="gameMode"
-            />
+          />
           <label for="add" class="radio-button">Ocean (addition)</label>
           <input
             type="radio"
@@ -63,7 +63,7 @@
             value="Forest"
             hidden
             [(ngModel)]="gameMode"
-            />
+          />
           <label for="div" class="radio-button">Forest (division)</label>
           <input
             type="radio"
@@ -72,8 +72,10 @@
             value="Mountain"
             hidden
             [(ngModel)]="gameMode"
-            />
-          <label for="mult" class="radio-button">Mountain (mulitplication)</label>
+          />
+          <label for="mult" class="radio-button"
+            >Mountain (mulitplication)</label
+          >
           <input
             type="radio"
             id="mix"
@@ -81,7 +83,7 @@
             value="Clouds"
             hidden
             [(ngModel)]="gameMode"
-            />
+          />
           <label for="mix" class="radio-button">Clouds (mixed)</label>
         </div>
         <div class="spacer-and-submit">
@@ -89,7 +91,7 @@
             type="submit"
             class="radio-button submit-button"
             [disabled]="!difficulty || !gameMode"
-            >
+          >
             Start!
           </button>
         </div>
@@ -101,6 +103,8 @@
         <p>Theme:</p>
         <br />
         <p>{{ gameMode }}</p>
+        <br />
+        <br />
         <br />
         <p>Difficulty:</p>
         <br />
@@ -119,38 +123,42 @@
         <form #answerForm="ngForm" (ngSubmit)="checkAnswer()">
           <p class="input">
             Your answer:&nbsp;<input
-            type="number"
-            name="answerForm"
-            [(ngModel)]="userAnswer"
-            required
+              type="number"
+              name="answerForm"
+              [(ngModel)]="userAnswer"
+              required
             /><button type="submit" class="answer" [disabled]="gameOver">
-            Submit
-          </button>
-        </p>
-      </form>
-      <br />
-      <p class="feedback">{{ feedback }}</p>
-      <br />
-      <div>
-        <p class="healthBar">
-          Attempts remaining:&nbsp;@for (hp of [].constructor(healthBar); track hp) {
-          <span
-            >&bull;</span
-            >
-          }
-        </p>
+              Submit
+            </button>
+          </p>
+        </form>
+        <br />
+        <p class="feedback">{{ feedback }}</p>
+        <br />
+        <div>
+          <p class="healthBar">
+            Attempts remaining:&nbsp;
+            @for (hp of [].constructor(healthBar); track hp) {
+              <span>&bull;</span>
+            }
+          </p>
+        </div>
+      </div>
+      <div class="right">
+        <p>Score:</p>
+        <br />
+        <p>{{ userScore }}</p>
+        <br />
+        <br />
+        <p>Goal:</p>
+        <br />
+        <p>100</p>
+        <br />
+        <br />
+        <p>Time:</p>
+        <br />
+        <app-stopwatch #stopwatch></app-stopwatch>
       </div>
     </div>
-    <div class="right">
-      <p>Score:</p>
-      <br />
-      <p>{{ userScore }}</p>
-      <br />
-      <p>Time:</p>
-      <br />
-      <app-stopwatch #stopwatch></app-stopwatch>
-    </div>
-  </div>
-}
-
+  }
 </main>

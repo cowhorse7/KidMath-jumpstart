@@ -4,10 +4,10 @@ import { GameCompleteModalComponent } from './game-complete-modal/game-complete-
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-    selector: 'app-game',
-    templateUrl: './game.component.html',
-    styleUrls: ['./game.component.css'],
-    standalone: false
+  selector: 'app-game',
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.css'],
+  standalone: false,
 })
 export class GameComponent {
   @ViewChild('stopwatch') stopwatch!: StopwatchComponent;
@@ -83,18 +83,29 @@ export class GameComponent {
     switch (this.difficulty) {
       case 'Easy':
         this.healthBar = 6;
-        this.max = 12;
+        this.max = 10;
         this.min = 1;
         break;
       case 'Medium':
         this.healthBar = 4;
-        this.max = 100;
-        this.min = 10;
+        if (this.operator === '+' || this.operator === '-') {
+          this.max = 100;
+          this.min = 10;
+        } else {
+          this.max = 14;
+          this.min = 2;
+        }
         break;
-      case 'Hard': // FIXME: change max/min for mult/div
+      case 'Hard':
         this.healthBar = 2;
-        this.max = 1000;
-        this.min = 100;
+        if (this.operator === '+' || this.operator === '-') {
+          this.max = 1000;
+          this.min = 10;
+        } else {
+          this.max = 22;
+          this.min = 2;
+        }
+        break;
     }
   }
 
@@ -110,6 +121,7 @@ export class GameComponent {
   }
 
   equationGenerator() {
+    this.userAnswer = null;
     this.setOperands();
     // FUTURE: One day, I might like to mix up which blank the user is filling in
     switch (this.operator) {
@@ -136,17 +148,17 @@ export class GameComponent {
       this.feedback = 'Correct!';
     } else {
       this.healthBar! -= 1;
-      this.feedback = 'Incorrect';
+      this.feedback = 'Incorrect. Correct answer was ' + this.answer + '.';
     }
     if (this.userScore === this.goal || this.healthBar === 0) {
+      if (this.userScore === this.goal) this.win = true;
       this.stopwatch.stop();
       this.gameOver = true;
       this.openCompletionScreen();
-      if (this.userScore === this.goal) this.win = true;
       this.feedback += ' Go back to the select screen to play again!';
+    } else {
+      this.equationGenerator();
     }
-    this.equationGenerator();
-    this.userAnswer = null;
   }
 
   readonly dialog = inject(MatDialog);
