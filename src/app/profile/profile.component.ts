@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SupabaseService } from '../service/supabase.service';
 import { AuthSession, User } from '@supabase/supabase-js';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-profile',
-    templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.css'],
-    standalone: false
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css'],
+  standalone: false,
 })
 export class ProfileComponent implements OnInit {
+  private readonly supabase = inject(SupabaseService);
   loading = false;
   username: string = '';
   best_score: number = 0;
@@ -23,7 +24,7 @@ export class ProfileComponent implements OnInit {
   isSubmitting = false;
   user: User | null = null;
 
-  constructor(private supabase: SupabaseService, private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {
     this.usernameForm = this.fb.group({
       username: ['', [Validators.required]],
     });
@@ -87,7 +88,7 @@ export class ProfileComponent implements OnInit {
 
     const { error } = await this.supabase.updateUsername(
       newUsername,
-      this.user!.id
+      this.user!.id,
     );
 
     if (error) {

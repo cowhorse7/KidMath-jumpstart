@@ -79,3 +79,5 @@ These are my preliminary page designs
 5/27/26 Continued Angular version migrations up to v20. I also realized it would be nice if the game displayed the correct answer when a user inputs an incorrect answer.
 
 5/28/26 Finished Angular migrations; added the correct answer display and changed the values for game difficulties; changed some CSS.
+
+6/4/26 Changed some formatting and CSS.

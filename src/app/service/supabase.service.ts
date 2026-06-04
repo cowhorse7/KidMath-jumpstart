@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class SupabaseService {
   public supabase = createClient(
     environment.SUPABASE_URL,
-    environment.SUPABASE_ANON_KEY
+    environment.SUPABASE_ANON_KEY,
   );
   private sessionSubject = new BehaviorSubject<any>(null);
   session$ = this.sessionSubject.asObservable();
@@ -34,8 +34,9 @@ export class SupabaseService {
   async signIn(email: string) {
     return await this.supabase.auth.signInWithOtp({
       email: email,
-      // options: {
-      // emailRedirectTo: 'https://jumpstart-nu.vercel.app/profile',}
+      options: {
+        emailRedirectTo: 'https://jumpstart-nu.vercel.app/profile',
+      },
     });
   }
 
