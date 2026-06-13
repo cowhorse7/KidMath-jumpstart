@@ -113,7 +113,10 @@
       <div class="center">
         <button class="arrow" (click)="back()">←</button>
         <!-- <button (click)="initGame()">Start!</button> -->
-        <app-animation-window></app-animation-window>
+        <app-animation-window
+          class="animation-window"
+          [gameMode]="gameMode"
+        ></app-animation-window>
         <br />
         <p class="equation">
           {{ operand1 }} {{ operator }} {{ operand2 }} = ___
@@ -138,7 +141,7 @@
         <div>
           <p class="healthBar">
             Attempts remaining:&nbsp;
-            @for (hp of [].constructor(healthBar); track hp) {
+            @for (hp of [].constructor(healthBar); track $index) {
               <span>&bull;</span>
             }
           </p>

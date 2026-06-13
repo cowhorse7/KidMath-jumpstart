@@ -81,3 +81,5 @@ These are my preliminary page designs
 5/28/26 Finished Angular migrations; added the correct answer display and changed the values for game difficulties; changed some CSS.
 
 6/4/26 Changed some formatting and CSS.
+
+6/12/26 Added an animation for the desert theme of the game.

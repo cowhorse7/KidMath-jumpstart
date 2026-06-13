@@ -66,9 +66,10 @@ img {
   color: white;
 }
 .parent {
-  display: flex;
-  gap: 10px;
-  justify-items: center;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  width: 100%;
+  justify-content: center;
 }
 .healthBar {
   font-size: medium;
@@ -78,8 +79,8 @@ span {
   color: gold;
 }
 .center {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  min-width: 680px;
 }
 .equation,
 .feedback {
@@ -91,12 +92,6 @@ span {
 .left,
 .right {
   margin-top: 5vh;
-}
-.right {
-  padding-left: 1em;
-}
-.left {
-  padding-right: 1em;
 }
 input {
   max-width: 100px;

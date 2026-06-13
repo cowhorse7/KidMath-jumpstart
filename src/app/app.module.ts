@@ -29,9 +29,9 @@ import { AnimationWindowComponent } from './game/animation-window/animation-wind
     ScoreTableComponent,
     StopwatchComponent,
     GameCompleteModalComponent,
-    AnimationWindowComponent,
   ],
   imports: [
+    AnimationWindowComponent,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

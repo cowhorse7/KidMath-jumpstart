@@ -1,1 +1,17 @@
-<img src="assets/images/gameplay.png" alt="placeholder image" />
+@switch (gameMode()) {
+  @case ("Ocean") {
+    <img src="assets/images/addition.png" alt="placeholder image" />
+  }
+  @case ("Desert") {
+    <app-camel></app-camel>
+  }
+  @case ("Volcano") {
+    <img src="assets/images/multiplication.png" alt="placeholder image" />
+  }
+  @case ("Forest") {
+    <img src="assets/images/division.png" alt="placeholder image" />
+  }
+  @default {
+    <img src="assets/images/gameplay.png" alt="placeholder image" />
+  }
+}
