@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { AnimationComponentInterface } from '../animation.interface';
 
 @Component({
   selector: 'app-camel',
@@ -6,7 +7,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrl: './camel.component.css',
   encapsulation: ViewEncapsulation.None,
 })
-export class CamelComponent {
+export class CamelComponent implements AnimationComponentInterface {
   protected readonly TOTAL = 10;
   protected steps = 0;
   private walking = false;

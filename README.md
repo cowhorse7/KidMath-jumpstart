@@ -83,3 +83,5 @@ These are my preliminary page designs
 6/4/26 Changed some formatting and CSS.
 
 6/12/26 Added an animation for the desert theme of the game.
+
+7/15/26 hooked up the desert animation with interface, game window, and user answers

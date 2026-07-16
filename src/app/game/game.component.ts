@@ -1,5 +1,6 @@
 import { Component, inject, ViewChild } from '@angular/core';
 import { StopwatchComponent } from './stopwatch/stopwatch.component';
+import { AnimationWindowComponent } from './animation-window/animation-window.component';
 import { GameCompleteModalComponent } from './game-complete-modal/game-complete-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -11,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class GameComponent {
   @ViewChild('stopwatch') stopwatch!: StopwatchComponent;
+  @ViewChild('animationWindow')
+  animationWindowComponent!: AnimationWindowComponent;
   game = false;
   gameOver = false;
   win = false;
@@ -34,6 +37,7 @@ export class GameComponent {
     this.gameOver = false;
     this.win = false;
     this.initGame();
+    this.animationWindowComponent.resetGame();
   }
   back() {
     this.game = false;
@@ -145,6 +149,7 @@ export class GameComponent {
   checkAnswer() {
     if (this.answer === this.userAnswer) {
       this.userScore += 10;
+      this.animationWindowComponent.triggerStep();
       this.feedback = 'Correct!';
     } else {
       this.healthBar! -= 1;
