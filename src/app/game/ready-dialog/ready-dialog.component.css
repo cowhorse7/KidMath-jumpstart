@@ -1,0 +1,15 @@
+mat-dialog-content,
+mat-dialog-actions {
+  background-color: rgb(69, 28, 8);
+  justify-content: center;
+  justify-items: center;
+}
+button {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 2px solid goldenrod;
+  border-radius: 6px;
+  background-color: rgb(222, 226, 227);
+  color: rgb(69, 28, 8);
+  cursor: pointer;
+}

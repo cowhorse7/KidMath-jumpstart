@@ -2,10 +2,10 @@ import { Component, OnDestroy } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
-    selector: 'app-stopwatch',
-    templateUrl: './stopwatch.component.html',
-    styleUrls: ['./stopwatch.component.css'],
-    standalone: false
+  selector: 'app-stopwatch',
+  templateUrl: './stopwatch.component.html',
+  styleUrls: ['./stopwatch.component.css'],
+  standalone: false,
 })
 export class StopwatchComponent implements OnDestroy {
   public time: number = 0;
@@ -17,7 +17,7 @@ export class StopwatchComponent implements OnDestroy {
     this.stop();
   }
 
-  formatTime(totalSeconds: number): string {
+  private formatTime(totalSeconds: number): string {
     const minutes = Math.floor(totalSeconds / 60)
       .toString()
       .padStart(2, '0');
@@ -25,7 +25,7 @@ export class StopwatchComponent implements OnDestroy {
     return `${minutes}:${seconds}`;
   }
 
-  start() {
+  public start() {
     if (this.running) return;
     this.running = true;
     this.timerSubscription = interval(1000).subscribe(() => {
@@ -34,12 +34,12 @@ export class StopwatchComponent implements OnDestroy {
     });
   }
 
-  stop() {
+  public stop() {
     this.running = false;
     this.timerSubscription?.unsubscribe();
   }
 
-  reset() {
+  public reset() {
     this.stop();
     this.time = 0;
     this.display = '00:00';

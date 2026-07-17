@@ -1,8 +1,9 @@
 import { Component, inject, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { StopwatchComponent } from './stopwatch/stopwatch.component';
 import { AnimationWindowComponent } from './animation-window/animation-window.component';
 import { GameCompleteModalComponent } from './game-complete-modal/game-complete-modal.component';
-import { MatDialog } from '@angular/material/dialog';
+import { ReadyDialogComponent } from './ready-dialog/ready-dialog.component';
 
 @Component({
   selector: 'app-game',
@@ -11,40 +12,44 @@ import { MatDialog } from '@angular/material/dialog';
   standalone: false,
 })
 export class GameComponent {
-  @ViewChild('stopwatch') stopwatch!: StopwatchComponent;
-  @ViewChild('animationWindow')
-  animationWindowComponent!: AnimationWindowComponent;
-  game = false;
-  gameOver = false;
-  win = false;
-  difficulty: string | null = null;
-  gameMode: string | null = null;
-  operator: string | null = null;
-  operand1: number | null = null;
-  operand2: number | null = null;
-  answer: number | null = null;
-  healthBar: number | null = null;
-  userAnswer: number | null = null;
-  userScore: number = 0;
-  userTime: number = 0.0;
-  feedback = '';
-  max: number = 0;
-  min: number = 0;
-  goal: number = 100;
+  @ViewChild(StopwatchComponent)
+  private readonly stopwatch!: StopwatchComponent;
+  @ViewChild(AnimationWindowComponent)
+  private readonly animationWindowComponent!: AnimationWindowComponent;
+  private readonly dialog = inject(MatDialog);
+  protected game = false;
+  protected gameOver = false;
+  protected win = false;
+  protected difficulty: string | null = null;
+  protected gameMode: string | null = null;
+  protected operator: string | null = null;
+  protected operand1: number | null = null;
+  protected operand2: number | null = null;
+  protected answer: number | null = null;
+  protected healthBar: number | null = null;
+  protected userAnswer: number | null = null;
+  protected userScore: number = 0;
+  protected userTime: number = 0.0;
+  protected feedback = '';
+  protected max: number = 0;
+  protected min: number = 0;
+  protected goal: number = 100;
 
-  onSubmit() {
+  protected onSubmit() {
     this.game = true;
     this.gameOver = false;
     this.win = false;
-    this.initGame();
-    this.animationWindowComponent.resetGame();
+    const dialogRef = this.dialog.open(ReadyDialogComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      this.initGame();
+    });
   }
-  back() {
+  protected back() {
     this.game = false;
     this.userScore = 0;
   }
 
-  setOperator() {
+  private setOperator() {
     switch (this.gameMode) {
       case 'Desert':
         this.operator = '-';
@@ -67,7 +72,7 @@ export class GameComponent {
     }
   }
 
-  setOperands() {
+  private setOperands() {
     if (this.gameMode === 'Clouds') this.setOperator();
     this.operand1 =
       Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
@@ -83,7 +88,7 @@ export class GameComponent {
     }
   }
 
-  initDifficultyVars() {
+  private initDifficultyVars() {
     switch (this.difficulty) {
       case 'Easy':
         this.healthBar = 6;
@@ -113,7 +118,8 @@ export class GameComponent {
     }
   }
 
-  initGame() {
+  private initGame() {
+    this.animationWindowComponent.resetGame();
     this.setOperator();
     this.initDifficultyVars();
     this.equationGenerator();
@@ -124,7 +130,7 @@ export class GameComponent {
     });
   }
 
-  equationGenerator() {
+  private equationGenerator() {
     this.userAnswer = null;
     this.setOperands();
     // FUTURE: One day, I might like to mix up which blank the user is filling in
@@ -146,7 +152,7 @@ export class GameComponent {
     }
   }
 
-  checkAnswer() {
+  protected checkAnswer() {
     if (this.answer === this.userAnswer) {
       this.userScore += 10;
       this.animationWindowComponent.triggerStep();
@@ -166,9 +172,8 @@ export class GameComponent {
     }
   }
 
-  readonly dialog = inject(MatDialog);
-  openCompletionScreen() {
-    const dialogRef = this.dialog.open(GameCompleteModalComponent, {
+  private openCompletionScreen() {
+    this.dialog.open(GameCompleteModalComponent, {
       data: {
         score: this.userScore,
         time: this.stopwatch.display,
