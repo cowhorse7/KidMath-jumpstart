@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import {
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogActions,
+} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-ready-dialog',
-  imports: [MatDialogModule],
+  imports: [MatDialogClose, MatDialogContent, MatDialogActions],
   templateUrl: './ready-dialog.component.html',
   styleUrl: './ready-dialog.component.css',
 })
